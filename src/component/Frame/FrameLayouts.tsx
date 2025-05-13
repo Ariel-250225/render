@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { css, useTheme } from "@emotion/react";
+import {css, Theme} from "@emotion/react";
 
 export const MainFrameWrapper = styled.article<{ coordinateY?: number }>(
   ({ coordinateY = 5 }) => css`
@@ -34,11 +34,12 @@ export const Container = styled.div`
 `;
 
 export const PageContainer = styled.div<{
+  theme : Theme;
   width: number;
   marginTop?: number;
   gap?: number;
 }>(
-  ({ width, marginTop = 7, gap = 1 }) => css`
+  ({ theme, width, marginTop = 7, gap = 1 }) => css`
     width: ${width}px;
     display: flex;
     flex-direction: column;
@@ -48,7 +49,7 @@ export const PageContainer = styled.div<{
     box-sizing: border-box;
     margin-top: ${marginTop}vh;
 
-    @media ${useTheme().deviceSize.phone} {
+    @media ${theme.deviceSize.phone} {
       width: ${width}px;
     }
   `,

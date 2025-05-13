@@ -45,7 +45,7 @@ export function Main() {
 
   return (
     <>
-      <PageContainer width={windowWidth - 100} gap={10}>
+      <PageContainer width={windowWidth - 100} gap={10} theme={theme}>
         <CarouselContainer
           width={windowWidth}
           css={css`
