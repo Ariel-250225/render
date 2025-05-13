@@ -5,10 +5,10 @@ import styled from "@emotion/styled";
 import { PageContainer } from "../component/Frame/FrameLayouts";
 import { useWindowContext } from "../Context/WindowContext";
 import { Carousel } from "react-responsive-carousel";
-// import ea_advertise from "../component/assets/video/ea-advertise.mp4";
-import cinematic_sports_basketball from "../component/assets/video/cinematic-sports-video-basketball-shoot-on-red-la-clippers-edit.mp4";
-import winning_isnt_for_everyone from "../component/assets/video/winning-isnt-for-everyone-winning-is-winning-nike.mp4";
-import winning_lebron_james from "../component/assets/video/winning-isnt-for-everyoneagain-lebron-james-nike.mp4";
+import ea_advertise from "../component/assets/video/ea-advertise.mp4";
+// import cinematic_sports_basketball from "../component/assets/video/cinematic-sports-video-basketball-shoot-on-red-la-clippers-edit.mp4";
+// import winning_isnt_for_everyone from "../component/assets/video/winning-isnt-for-everyone-winning-is-winning-nike.mp4";
+// import winning_lebron_james from "../component/assets/video/winning-isnt-for-everyoneagain-lebron-james-nike.mp4";
 import fullPerimeter from "../component/assets/video/full_perimeter.mp4";
 import { ASPECT_RATIO, ContentsContainer } from "../component/layouts/Layouts";
 import { css, Theme, useTheme } from "@emotion/react";
@@ -30,10 +30,10 @@ import advertisement from "../component/assets/video/napoli-advertisement.mp4";
 import TelegramIcon from "@mui/icons-material/Telegram";
 
 const ADVERTISEMENT_LIST = [
-  // ea_advertise,
-  cinematic_sports_basketball,
-  winning_isnt_for_everyone,
-  winning_lebron_james,
+  ea_advertise,
+  // cinematic_sports_basketball,
+  // winning_isnt_for_everyone,
+  // winning_lebron_james,
 ];
 
 export function Main() {
