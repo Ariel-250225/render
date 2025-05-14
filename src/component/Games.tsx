@@ -22,42 +22,30 @@ const DEMO_MINI_GAMES = [
   {
     name: "Ghost Boo Nanaza",
     image: pragmatic,
-    description: "Ghost Boo !! 뿌쓩빠슝 유령을 해치워서 돈을 벌어봐욧 !",
-    path: "ghost_boo_nanaza",
   },
   {
     name: "STAR 🌟 Shine Princess",
     image:
       // eslint-disable-next-line noSecrets/no-secrets
       "https://pbs.twimg.com/profile_images/1811318315588915200/6C7t1_VY_400x400.png",
-    description: "카와이한 공주님과 함께 돈을 벌어봐욧 !",
-    path: "reel_big_catch",
   },
   {
     name: "REEL BIG Catch",
     image:
       // eslint-disable-next-line noSecrets/no-secrets
       "https://media.licdn.com/dms/image/v2/C4D12AQHMc1JoFWLYfQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1552637504906?e=2147483647&v=beta&t=cwnMxXlinMh3fkcWP9t5aIjxtEC6lR1FETwcaDJ5LiI",
-    description: "커여운 악어가 물코기를 잡으면 돈을 줘욧 !",
-    path: "reel_big_catch",
   },
   {
     name: "Golden Year",
     image: evolution,
-    description: "뭔지 잘 몰라욧 !",
-    path: "golden_year",
   },
   {
     name: "WU KONG",
     image: pgSlot,
-    description: "손육공과 함께 돈을 벌어봐욧 !",
-    path: "wu_kong",
   },
   {
     name: "WU KONG",
     image: eSports,
-    description: "손육공과 함께 돈을 벌어봐욧 !",
-    path: "wu_kong",
   },
 ];
 

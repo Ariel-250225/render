@@ -5,10 +5,10 @@ import styled from "@emotion/styled";
 import { PageContainer } from "../component/Frame/FrameLayouts";
 import { useWindowContext } from "../Context/WindowContext";
 import { Carousel } from "react-responsive-carousel";
-import ea_advertise from "../component/assets/video/ea-advertise.mp4";
-// import cinematic_sports_basketball from "../component/assets/video/cinematic-sports-video-basketball-shoot-on-red-la-clippers-edit.mp4";
+// import ea_advertise from "../component/assets/video/ea-advertise.mp4";
+import cinematic_sports_basketball from "../component/assets/video/cinematic-sports-video-basketball-shoot-on-red-la-clippers-edit.mp4";
 // import winning_isnt_for_everyone from "../component/assets/video/winning-isnt-for-everyone-winning-is-winning-nike.mp4";
-// import winning_lebron_james from "../component/assets/video/winning-isnt-for-everyoneagain-lebron-james-nike.mp4";
+import winning_lebron_james from "../component/assets/video/winning-isnt-for-everyoneagain-lebron-james-nike.mp4";
 import fullPerimeter from "../component/assets/video/full_perimeter.mp4";
 import { ASPECT_RATIO, ContentsContainer } from "../component/layouts/Layouts";
 import { css, Theme, useTheme } from "@emotion/react";
@@ -30,10 +30,10 @@ import advertisement from "../component/assets/video/napoli-advertisement.mp4";
 import TelegramIcon from "@mui/icons-material/Telegram";
 
 const ADVERTISEMENT_LIST = [
-  ea_advertise,
-  // cinematic_sports_basketball,
+  // ea_advertise,
+  cinematic_sports_basketball,
   // winning_isnt_for_everyone,
-  // winning_lebron_james,
+  winning_lebron_james,
 ];
 
 export function Main() {
@@ -43,9 +43,13 @@ export function Main() {
   const itemHeight =
     (windowWidth / ASPECT_RATIO.widesScreen.w) * ASPECT_RATIO.widesScreen.h;
 
+  const move = () => {
+    window.location.href = "https://xn--ak-cb5ju9v.com/";
+  };
+
   return (
     <>
-      <PageContainer width={windowWidth - 100} gap={10} theme={theme}>
+      <PageContainer width={windowWidth - 200} gap={20} theme={theme}>
         <CarouselContainer
           width={windowWidth}
           css={css`
@@ -86,9 +90,7 @@ export function Main() {
                   border: 1px solid ${theme.mode.textPrimary};
                   background-color: rgba(255, 255, 255, 0);
                 `}
-                func={function (): void {
-                  throw new Error("Function not implemented.");
-                }}
+                func={move}
               />
             </div>
           </div>
@@ -137,7 +139,7 @@ export function Main() {
             css={css`
               margin: 2vh 0;
               text-align: center;
-              font-size: 2.4vw;
+              font-size: 1.8vw;
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -166,7 +168,6 @@ export function Main() {
               width: 100%;
               margin: 8vh 0;
               text-align: center;
-              font-size: 2.8vw;
               display: flex;
               flex-direction: column;
               align-items: flex-start;
@@ -273,7 +274,7 @@ export function Main() {
             css={css`
               margin: 2vh 0;
               text-align: center;
-              font-size: 2.4vw;
+              font-size: 1.8vw;
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -398,7 +399,7 @@ export function Main() {
                       font-family: ${theme.fontStyle.roboto};
                     `}
                   >
-                    SSC Napoli Official Partner
+                    USDT TRC-20
                   </span>
                   <span
                     css={css`
@@ -406,7 +407,8 @@ export function Main() {
                       font-family: ${theme.fontStyle.yesGothicMedium};
                     `}
                   >
-                    OKGO & 나폴리 공식 파트너쉽 진행 <br />
+                    TETHER WALLET SERVICE
+                    <br />
                   </span>
                 </div>
               }
@@ -447,7 +449,7 @@ export function Main() {
                     css={css`
                       width: 16vw;
                     `}
-                  ></img>
+                  />
                 </div>
               }
               image=""
@@ -578,7 +580,7 @@ export function Main() {
             css={css`
               margin: 2vh 0;
               text-align: center;
-              font-size: 2.4vw;
+              font-size: 1.8vw;
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -591,7 +593,7 @@ export function Main() {
                 margin: 3.5vh 0;
               `}
             >
-              다른곳에서 발매되지 않는 게임을 오직 OKGO에서,
+              다른 곳에서 발매되지 않는 게임을 오직 OKGO에서,
             </span>
             <span>더 높은 배당으로.</span>
           </div>
@@ -601,51 +603,56 @@ export function Main() {
         </ContentsContainer>
         <ContentsContainer>
           <ContentsTitle theme={theme}>GLOBAL PARTNER</ContentsTitle>
-          <video
-            width={windowWidth - 200}
-            src={advertisement}
-            controls={false}
-            playsInline
-            autoPlay
-            muted
-            loop
-          />
-          <ContentsTitle theme={theme}>WHO IS NEXT?</ContentsTitle>
-          <div
-            css={css`
-              margin: 2vh 0;
-              text-align: center;
-              font-size: 2.4vw;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              font-family: ${theme.fontStyle.koPubDotumBold};
-            `}
-          >
-            <span
-              css={css`
-                margin: 3.5vh 0;
-              `}
-            >
-              당신이 생각하는 최고의 팀과 함께합니다.
-            </span>
+          <VideoContainer>
+            <video
+              width={windowWidth - 200}
+              src={advertisement}
+              controls={false}
+              playsInline
+              autoPlay
+              muted
+              loop
+            />
+          </VideoContainer>
+          <DescriptionContainer>
+            <ContentsTitle theme={theme}>WHO IS NEXT?</ContentsTitle>
             <div
               css={css`
+                margin: 2vh 0;
+                text-align: center;
+                font-size: 1.8vw;
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 20px;
+                font-family: ${theme.fontStyle.koPubDotumBold};
               `}
             >
-              <span>우리의 다음 파트너를 알려주세요. </span>
-              <TelegramIcon
-                fontSize="large"
-                sx={{ width: "2em", height: "2em", cursor: "pointer" }}
-              />
+              <span
+                css={css`
+                  margin: 3.5vh 0;
+                `}
+              >
+                당신이 생각하는 최고의 팀과 함께합니다.
+              </span>
+              <div
+                css={css`
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 20px;
+                `}
+              >
+                <span>우리의 다음 파트너를 알려주세요. </span>
+                <TelegramIcon
+                  onClick={move}
+                  fontSize="large"
+                  sx={{ width: "2em", height: "2em", cursor: "pointer" }}
+                />
+              </div>
             </div>
-          </div>
+          </DescriptionContainer>
         </ContentsContainer>
       </PageContainer>
     </>
@@ -673,3 +680,6 @@ const CarouselContainer = styled.div<{ width: number }>(
     margin-bottom: 40px;
   `,
 );
+
+const VideoContainer = styled.div``;
+const DescriptionContainer = styled.div``;
