@@ -209,7 +209,7 @@ const NewsFeedContainer = styled.div<{ theme: Theme }>(
     gap: 1vw;
 
     @media ${theme.deviceSize.phone} {
-      width: 60%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;

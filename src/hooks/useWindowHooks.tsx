@@ -49,27 +49,17 @@ export const useProportionSizeHook = (
 };
 
 export const useLinearInterpolation = (
-  independent: number,
+  x: number,
   x1: number,
   y1: number,
   x2: number,
   y2: number,
 ) => {
-  const [size, setSize] = useState<number>(y1);
+  const slope = (y2 - y1) / (x2 - x1);
+  const intercept = y1 - slope * x1;
+  const result = slope * x + intercept;
 
-  useEffect(() => {
-    // 선형 보간 공식: y = y1 + ( (y2 - y1) / (x2 - x1) ) * (x - x1)
-    const slope = (y2 - y1) / (x2 - x1); // 기울기
-    const intercept = y1 - slope * x1; // y절편
-    const calculatedValue = slope * independent + intercept;
-
-    // 범위 제한 (선택 사항)
-    const clampedValue = Math.min(
-      Math.max(calculatedValue, Math.min(y1, y2)),
-      Math.max(y1, y2),
-    );
-    setSize(clampedValue);
-  }, [independent, x1, y1, x2, y2]);
-
-  return { result: size };
+  return {
+    result: Math.min(Math.max(result, Math.min(y1, y2)), Math.max(y1, y2)),
+  };
 };

@@ -5,9 +5,7 @@ import styled from "@emotion/styled";
 import { PageContainer } from "../component/Frame/FrameLayouts";
 import { useWindowContext } from "../Context/WindowContext";
 import { Carousel } from "react-responsive-carousel";
-// import ea_advertise from "../component/assets/video/ea-advertise.mp4";
 import cinematic_sports_basketball from "../component/assets/video/cinematic-sports-video-basketball-shoot-on-red-la-clippers-edit.mp4";
-// import winning_isnt_for_everyone from "../component/assets/video/winning-isnt-for-everyone-winning-is-winning-nike.mp4";
 import winning_lebron_james from "../component/assets/video/winning-isnt-for-everyoneagain-lebron-james-nike.mp4";
 import fullPerimeter from "../component/assets/video/full_perimeter.mp4";
 import { ASPECT_RATIO, ContentsContainer } from "../component/layouts/Layouts";
@@ -17,7 +15,10 @@ import { Sports } from "../component/Game/Sports";
 import { SlotGames } from "../component/Games";
 import { FuncItem } from "../component/styled/Button/Button";
 import { ScrollScaleVideo } from "../component/Scroll/ScrollScaleVideo";
-import { useLinearInterpolation } from "../hooks/useWindowHooks";
+import {
+  useLinearInterpolation,
+  useProportionHook,
+} from "../hooks/useWindowHooks";
 import { GlobalNewsFeed, NewsFeed } from "../component/contents/News";
 
 const ADVERTISEMENT_LIST = [
@@ -26,6 +27,8 @@ const ADVERTISEMENT_LIST = [
   // winning_isnt_for_everyone,
   winning_lebron_james,
 ];
+
+const domainList = ["okgossc.com", "okgoseriea.com", "okgonapoli.com"];
 
 export function Main() {
   const theme = useTheme();
@@ -38,23 +41,17 @@ export function Main() {
     window.location.href = "https://" + url;
   };
 
-  const { result } = useLinearInterpolation(
-    windowWidth,
-    847,
-    34, // (x1, y1) = (864, 32)
-    1693,
-    67, // (x2, y2) = (1728, 51)
-  );
+  const header = document.querySelector("header");
 
-  const isMobile = windowWidth <= theme.windowSize.mobile;
-
+  const { result } = useLinearInterpolation(windowWidth, 864, 48, 1728, 82);
+  const pagePadding = useProportionHook(windowWidth, 100, theme.windowSize.HD);
   return (
     <>
       <PageContainer
-        width={isMobile ? windowWidth - 50 : windowWidth - 100}
+        width={windowWidth - pagePadding.size}
         gap={20}
         theme={theme}
-        marginTop={result + 10}
+        marginTop={header ? header.offsetHeight : result}
       >
         <CarouselContainer
           width={windowWidth}
@@ -90,8 +87,9 @@ export function Main() {
                   margin-bottom: 50px;
                 `}
               >
-                베팅을 즐겨라, <br />
-                즐거움으로 승부하라 !
+                SSC 나폴리와 함께하는 <br />
+                아시아 최고의 베팅 사이트 <br />
+                지금 바로 가입하세요.
               </div>
               <div
                 css={css`
@@ -102,42 +100,20 @@ export function Main() {
                   gap: 8px;
                 `}
               >
-                <FuncItem
-                  label="OKGOSSC.COM"
-                  css={css`
-                    width: 20vw;
-                    border: 1px solid ${theme.mode.textPrimary};
-                    background-color: rgba(255, 255, 255, 0);
-                    font-family: ${theme.mode.font.logo};
+                {domainList.map((domain) => (
+                  <FuncItem
+                    label={domain.toUpperCase()}
+                    css={css`
+                      width: 20vw;
+                      border: 1px solid ${theme.mode.textPrimary};
+                      background-color: rgba(255, 255, 255, 0);
+                      font-family: ${theme.fontStyle.roboto};
 
-                    font-size: 1.4rem;
-                  `}
-                  func={() => move("okgoscc.com")}
-                />
-                <FuncItem
-                  label="OKGOSERIEA.COM"
-                  css={css`
-                    width: 20vw;
-                    border: 1px solid ${theme.mode.textPrimary};
-                    background-color: rgba(255, 255, 255, 0);
-                    font-family: ${theme.mode.font.logo};
-
-                    font-size: 1.4rem;
-                  `}
-                  func={() => move("okgoseriea.com")}
-                />
-                <FuncItem
-                  label="OKGONAPOLI.COM"
-                  css={css`
-                    width: 20vw;
-                    border: 1px solid ${theme.mode.textPrimary};
-                    background-color: rgba(255, 255, 255, 0);
-                    font-family: ${theme.mode.font.logo};
-
-                    font-size: 1.4rem;
-                  `}
-                  func={() => move("okgonapoli.com")}
-                />
+                      font-size: 1.4rem;
+                    `}
+                    func={() => move(domain)}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -186,7 +162,7 @@ export function Main() {
             css={css`
               margin: 2vh 0;
               text-align: center;
-              font-size: 1.8vw;
+              font-size: 2.4vw;
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -354,7 +330,7 @@ export function Main() {
             css={css`
               margin: 2vh 0;
               text-align: center;
-              font-size: 1.8vw;
+              font-size: 2.4vw;
               display: flex;
               flex-direction: column;
               align-items: center;
