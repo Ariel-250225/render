@@ -1,6 +1,8 @@
 import { css, Theme, useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ReactNode } from "react";
+import { useProportionHook } from "../../hooks/useWindowHooks";
+import { useWindowContext } from "../../Context/WindowContext";
 
 export function NewsCard(props: {
   image: string;
@@ -17,7 +19,6 @@ export function NewsCard(props: {
     image,
     color,
     contents,
-    width = 35,
     description,
     subLine,
     aspectRatio,
@@ -26,10 +27,14 @@ export function NewsCard(props: {
   } = props;
   const theme = useTheme();
 
+  const { windowWidth } = useWindowContext();
+
+  const { size } = useProportionHook(windowWidth, 25, theme.windowSize.HD);
+
   return (
     <CardContainer>
       <Card color={image}>
-        <CardShape width={width}>
+        <CardShape aspectRatio={aspectRatio}>
           {banner ? (
             banner
           ) : (
@@ -40,7 +45,7 @@ export function NewsCard(props: {
           </ShapeDividerBottom>
         </CardShape>
         <CardBody>
-          <Blockquote color={color} contents={contents} />
+          <Blockquote color={color} contents={contents} size={size} />
         </CardBody>
         <CardFooter
           color={color}
@@ -54,6 +59,7 @@ export function NewsCard(props: {
 }
 
 const CardContainer = styled.div`
+  width: 100%;
   flex: 0 0 auto;
 
   transition: all 0.3s ease-in-out;
@@ -82,16 +88,17 @@ const Card = styled.div`
   border-radius: 6px;
 `;
 
-const CardShape = styled.div<{ width: number }>(
-  ({ width }) => css`
+const CardShape = styled.div<{ aspectRatio?: string }>(
+  ({ aspectRatio }) => css`
     position: relative;
 
-    width: ${width}vw;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    aspect-ratio: ${aspectRatio};
   `,
 );
 
@@ -158,8 +165,12 @@ const CardBody = styled.div`
   flex: 1 1 auto;
 `;
 
-function Blockquote(props: { color: string; contents: ReactNode }) {
-  const { color, contents } = props;
+function Blockquote(props: {
+  color: string;
+  contents: ReactNode;
+  size: number;
+}) {
+  const { color, contents, size } = props;
   return (
     <BlockquoteContainer>
       <BlockquoteCover
@@ -167,8 +178,8 @@ function Blockquote(props: { color: string; contents: ReactNode }) {
         viewBox="0 0 475.082 475.081"
         x="0px"
         y="0px"
-        width="25px"
-        height="25px"
+        width={size}
+        height={size}
         xmlnsXlink="http://www.w3.org/XML/1998/namespace"
         xmlSpace="preserve"
         version="1.1"
@@ -196,7 +207,7 @@ const BlockquoteCover = styled.svg<{ color: string }>(
   `,
 );
 
-const Contents = styled.p`
+const Contents = styled.div`
   margin-top: 0.5rem;
 `;
 

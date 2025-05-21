@@ -84,6 +84,7 @@ const colors = {
 
   // ✅ Primary Colors
   vividCerulean: "#00A0FF",
+  blueBikini: "#00aeef",
   skyBlue: "#007BFF",
   deepBlue: "#0056D2",
   royalBlue: "#003C99",
@@ -107,6 +108,7 @@ const colors = {
   neonBlue: "#00D4FF",
   electricBlue: "#0088CC",
   darkSapphire: "#002C66",
+  darkCerulean: "#003C82",
   azureBlue: "#00A8FF",
   azure: "#037AED",
   mayaBlue: "#58CCFF",
@@ -148,12 +150,12 @@ const defaultMode = {
   // 🔹 기본 텍스트 색상
   textPrimary: colors.white,
   textSecondary: colors.lightGray,
-  textAccent: colors.vividCerulean,
+  textAccent: colors.blueBikini,
   textRevers: colors.black,
 
   // 🔹 버튼 색상
   buttonBackground: colors.black,
-  buttonHoverBackground: colors.azureBlue,
+  buttonHoverBackground: colors.blueBikini,
   buttonText: colors.white,
 
   // 🔹 링크 색상
@@ -162,7 +164,7 @@ const defaultMode = {
 
   // 🔹 네비게이션 & 메뉴
   menuBackground: colors.midnightBlack,
-  menuActive: colors.vividCerulean,
+  menuActive: colors.blueBikini,
   menuInactive: colors.lightGrayToneUp,
 
   // 🔹 테두리 & 구분선
@@ -236,12 +238,12 @@ const lightMode = {
   // 🔹 기본 텍스트 색상
   textPrimary: colors.white,
   textSecondary: colors.lightGray,
-  textAccent: colors.vividCerulean,
+  textAccent: colors.blueBikini,
   textRevers: colors.black,
 
   // 🔹 버튼 색상
   buttonBackground: colors.charlestonGreen,
-  buttonHoverBackground: colors.vividCerulean,
+  buttonHoverBackground: colors.blueBikini,
   buttonText: colors.white,
 
   // 🔹 링크 색상
@@ -250,7 +252,7 @@ const lightMode = {
 
   // 🔹 네비게이션 & 메뉴
   menuBackground: colors.midnightBlack,
-  menuActive: colors.vividCerulean,
+  menuActive: colors.blueBikini,
   menuInactive: colors.lightGrayToneUp,
 
   // 🔹 테두리 & 구분선

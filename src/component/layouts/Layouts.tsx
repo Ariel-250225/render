@@ -262,7 +262,7 @@ export const SummaryTitle = styled.div<{ theme: Theme }>(
 export const Divider = styled.div<{ theme: Theme }>(
   ({ theme }) => css`
     width: 1px;
-    height: 24px;
+    height: 2.5em;
     background: ${theme.mode.textSecondary};
   `,
 );

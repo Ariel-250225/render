@@ -16,18 +16,9 @@ import { Fragment } from "react";
 import { Sports } from "../component/Game/Sports";
 import { SlotGames } from "../component/Games";
 import { FuncItem } from "../component/styled/Button/Button";
-import { LogoText } from "../component/Logo/LogoIcon";
-import { NewsCard } from "../component/card/News";
-
-import sscNapoli from "../component/assets/image/news/SSC_Napoli.png";
-import news_3 from "../component/assets/image/news/news_3.jpg";
-import globalNews_1 from "../component/assets/image/news/global_news_1.jpg";
-import globalNews_2 from "../component/assets/image/news/global_news_2.jpg";
-import { ICoinLogo } from "../component/IcoinsLogo";
-
-import advertisement from "../component/assets/video/napoli-advertisement.mp4";
-
-import TelegramIcon from "@mui/icons-material/Telegram";
+import { ScrollScaleVideo } from "../component/Scroll/ScrollScaleVideo";
+import { useLinearInterpolation } from "../hooks/useWindowHooks";
+import { GlobalNewsFeed, NewsFeed } from "../component/contents/News";
 
 const ADVERTISEMENT_LIST = [
   // ea_advertise,
@@ -43,13 +34,28 @@ export function Main() {
   const itemHeight =
     (windowWidth / ASPECT_RATIO.widesScreen.w) * ASPECT_RATIO.widesScreen.h;
 
-  const move = () => {
-    window.location.href = "https://xn--ak-cb5ju9v.com/";
+  const move = (url: string) => {
+    window.location.href = "https://www." + url;
   };
+
+  const { result } = useLinearInterpolation(
+    windowWidth,
+    847,
+    34, // (x1, y1) = (864, 32)
+    1693,
+    67, // (x2, y2) = (1728, 51)
+  );
+
+  const isMobile = windowWidth <= theme.windowSize.mobile;
 
   return (
     <>
-      <PageContainer width={windowWidth - 200} gap={20} theme={theme}>
+      <PageContainer
+        width={isMobile ? windowWidth - 50 : windowWidth - 100}
+        gap={20}
+        theme={theme}
+        marginTop={result + 10}
+      >
         <CarouselContainer
           width={windowWidth}
           css={css`
@@ -79,19 +85,60 @@ export function Main() {
                 margin-top: 30px;
               `}
             >
-              <div>
+              <div
+                css={css`
+                  margin-bottom: 50px;
+                `}
+              >
                 베팅을 즐겨라, <br />
                 즐거움으로 승부하라 !
               </div>
-              <FuncItem
-                label={<LogoText />}
+              <div
                 css={css`
-                  padding: 6px 40px;
-                  border: 1px solid ${theme.mode.textPrimary};
-                  background-color: rgba(255, 255, 255, 0);
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 8px;
                 `}
-                func={move}
-              />
+              >
+                <FuncItem
+                  label="OKGOSSC.COM"
+                  css={css`
+                    width: 20vw;
+                    border: 1px solid ${theme.mode.textPrimary};
+                    background-color: rgba(255, 255, 255, 0);
+                    font-family: ${theme.mode.font.logo};
+
+                    font-size: 1.4rem;
+                  `}
+                  func={() => move("OKGOSSC.COM")}
+                />
+                <FuncItem
+                  label="OKGOSERIEA.COM"
+                  css={css`
+                    width: 20vw;
+                    border: 1px solid ${theme.mode.textPrimary};
+                    background-color: rgba(255, 255, 255, 0);
+                    font-family: ${theme.mode.font.logo};
+
+                    font-size: 1.4rem;
+                  `}
+                  func={() => move("OKGOSERIEA.COM")}
+                />
+                <FuncItem
+                  label="OKGONAPOLI.COM"
+                  css={css`
+                    width: 20vw;
+                    border: 1px solid ${theme.mode.textPrimary};
+                    background-color: rgba(255, 255, 255, 0);
+                    font-family: ${theme.mode.font.logo};
+
+                    font-size: 1.4rem;
+                  `}
+                  func={() => move("OKGONAPOLI.COM")}
+                />
+              </div>
             </div>
           </div>
           <video
@@ -294,284 +341,11 @@ export function Main() {
         </ContentsContainer>
         <ContentsContainer>
           <ContentsTitle theme={theme}>GLOBAL NEWS FEED</ContentsTitle>
-          <div
-            css={css`
-              width: 100%;
-              display: flex;
-              flex-direction: row;
-              flex-wrap: wrap;
-              justify-content: space-between;
-              align-items: center;
-              align-content: center;
-              color: ${theme.mode.textRevers};
-              gap: 2vw;
-            `}
-          >
-            <NewsCard
-              image={globalNews_1}
-              color="#5BB2E1"
-              width={28}
-              shape={false}
-              contents={
-                <div
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    align-content: flex-start;
-                    gap: 20px;
-                  `}
-                >
-                  <span
-                    css={css`
-                      font-size: 1.6em;
-                      font-weight: 800;
-                      font-family: ${theme.fontStyle.roboto};
-                    `}
-                  >
-                    OKGO & NAPOLI
-                  </span>
-                  <span
-                    css={css`
-                      font-size: 1em;
-                      font-family: ${theme.fontStyle.yesGothicMedium};
-                    `}
-                  >
-                    HIGHLIGHT VIDEO <br />
-                  </span>
-                </div>
-              }
-              aspectRatio="2/1"
-            />
-            <NewsCard
-              image={globalNews_2}
-              color="#5BB2E1"
-              width={28}
-              shape={false}
-              contents={
-                <div
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    align-content: flex-start;
-                    gap: 20px;
-                  `}
-                >
-                  <span
-                    css={css`
-                      font-size: 1.6em;
-                      font-weight: 800;
-                      font-family: ${theme.fontStyle.roboto};
-                    `}
-                  >
-                    SSC Napoli Official Partner
-                  </span>
-                  <span
-                    css={css`
-                      font-size: 1em;
-                      font-family: ${theme.fontStyle.yesGothicMedium};
-                    `}
-                  >
-                    OKGO & 나폴리 공식 파트너쉽 진행 <br />
-                  </span>
-                </div>
-              }
-              aspectRatio="2/1"
-            />
-            <NewsCard
-              // eslint-disable-next-line noSecrets/no-secrets
-              image="https://public.bnbstatic.com/static/academy/uploads-original/2fd4345d8c3a46278941afd9ab7ad225.png"
-              color="#27A17A"
-              width={28}
-              shape={false}
-              contents={
-                <div
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    align-content: flex-start;
-                    gap: 20px;
-                  `}
-                >
-                  <span
-                    css={css`
-                      font-size: 1.6em;
-                      font-weight: 800;
-                      font-family: ${theme.fontStyle.roboto};
-                    `}
-                  >
-                    USDT TRC-20
-                  </span>
-                  <span
-                    css={css`
-                      font-size: 1em;
-                      font-family: ${theme.fontStyle.yesGothicMedium};
-                    `}
-                  >
-                    TETHER WALLET SERVICE
-                    <br />
-                  </span>
-                </div>
-              }
-              aspectRatio="2/1"
-            />
-          </div>
+          <GlobalNewsFeed />
         </ContentsContainer>
         <ContentsContainer>
           <ContentsTitle theme={theme}>NEWS FEED</ContentsTitle>
-          <div
-            css={css`
-              width: 100%;
-              display: flex;
-              flex-direction: row;
-              flex-wrap: wrap;
-              justify-content: center;
-              align-items: center;
-              align-content: center;
-              gap: 2vw;
-              color: ${theme.mode.textRevers};
-            `}
-          >
-            <NewsCard
-              banner={
-                <div
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    aspect-ratio: 1/1;
-                    width: 20vw;
-                  `}
-                >
-                  <img
-                    src={sscNapoli}
-                    alt="napoli"
-                    css={css`
-                      width: 16vw;
-                    `}
-                  />
-                </div>
-              }
-              image=""
-              color="#040434"
-              width={20}
-              contents={
-                <div
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    align-content: flex-start;
-                    gap: 20px;
-                  `}
-                >
-                  <span
-                    css={css`
-                      font-size: 1.5em;
-                      font-weight: 800;
-                      font-family: ${theme.fontStyle.yesGothicBold};
-                    `}
-                  >
-                    글로벌 베팅을 선도하다
-                  </span>
-                  <span
-                    css={css`
-                      font-size: 1em;
-                      font-family: ${theme.fontStyle.yesGothicMedium};
-                    `}
-                  >
-                    OKGO & 나폴리 공식 파트너쉽 진행 <br />
-                    나폴리 VS 제노아 경기
-                  </span>
-                </div>
-              }
-              aspectRatio="1/1"
-            />
-            <NewsCard
-              width={20}
-              banner={
-                <div
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    aspect-ratio: 1/1;
-                    width: 20vw;
-                  `}
-                >
-                  <ICoinLogo fontSize={50} />
-                </div>
-              }
-              color={theme.colors.azure}
-              contents={
-                <div
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    align-content: flex-start;
-                    gap: 20px;
-                  `}
-                >
-                  <span
-                    css={css`
-                      font-size: 1.5em;
-                      font-weight: 800;
-                      font-family: ${theme.fontStyle.yesGothicBold};
-                    `}
-                  >
-                    가상화폐 입금, 아이코인 도입
-                  </span>
-                  <span
-                    css={css`
-                      font-size: 1em;
-                      font-family: ${theme.fontStyle.yesGothicMedium};
-                    `}
-                  >
-                    고객의 보안을 1순위로 생각한 <br />
-                    비실명 회원제 도입
-                  </span>
-                </div>
-              }
-              aspectRatio="1/1"
-              image=""
-            />
-            <NewsCard
-              width={20}
-              image={news_3}
-              color="#061F27"
-              description=""
-              contents={
-                <div
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    align-content: flex-start;
-                    gap: 20px;
-                  `}
-                >
-                  <span
-                    css={css`
-                      font-size: 1.5em;
-                      font-weight: 800;
-                      font-family: ${theme.fontStyle.yesGothicBold};
-                    `}
-                  >
-                    롤 정규리그 업데이트
-                  </span>
-                  <span
-                    css={css`
-                      font-size: 1em;
-                      font-family: ${theme.fontStyle.yesGothicMedium};
-                    `}
-                  >
-                    LCK, LPL 등 정규리그 <br />
-                    발매 업데이트
-                  </span>
-                </div>
-              }
-              aspectRatio="1/1"
-            />
-          </div>
+          <NewsFeed />
         </ContentsContainer>
         <ContentsContainer>
           <ContentsTitle theme={theme}>LET`S PLAY</ContentsTitle>
@@ -601,59 +375,12 @@ export function Main() {
         <ContentsContainer>
           <SlotGames />
         </ContentsContainer>
-        <ContentsContainer>
-          <ContentsTitle theme={theme}>GLOBAL PARTNER</ContentsTitle>
-          <VideoContainer>
-            <video
-              width={windowWidth - 200}
-              src={advertisement}
-              controls={false}
-              playsInline
-              autoPlay
-              muted
-              loop
-            />
-          </VideoContainer>
-          <DescriptionContainer>
-            <ContentsTitle theme={theme}>WHO IS NEXT?</ContentsTitle>
-            <div
-              css={css`
-                margin: 2vh 0;
-                text-align: center;
-                font-size: 1.8vw;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                font-family: ${theme.fontStyle.koPubDotumBold};
-              `}
-            >
-              <span
-                css={css`
-                  margin: 3.5vh 0;
-                `}
-              >
-                당신이 생각하는 최고의 팀과 함께합니다.
-              </span>
-              <div
-                css={css`
-                  display: flex;
-                  flex-direction: row;
-                  align-items: center;
-                  justify-content: center;
-                  gap: 20px;
-                `}
-              >
-                <span>우리의 다음 파트너를 알려주세요. </span>
-                <TelegramIcon
-                  onClick={move}
-                  fontSize="large"
-                  sx={{ width: "2em", height: "2em", cursor: "pointer" }}
-                />
-              </div>
-            </div>
-          </DescriptionContainer>
-        </ContentsContainer>
+        <PageContainer theme={theme} width={windowWidth}>
+          <ContentsContainer>
+            <ContentsTitle theme={theme}>GLOBAL PARTNER</ContentsTitle>
+            <ScrollScaleVideo windowWidth={windowWidth} />
+          </ContentsContainer>
+        </PageContainer>
       </PageContainer>
     </>
   );
@@ -680,6 +407,3 @@ const CarouselContainer = styled.div<{ width: number }>(
     margin-bottom: 40px;
   `,
 );
-
-const VideoContainer = styled.div``;
-const DescriptionContainer = styled.div``;

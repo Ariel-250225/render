@@ -1,70 +1,78 @@
 /** @jsxImportSource @emotion/react */
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+import { SlideButton } from "../styled/Button/Button";
+import { css, useTheme } from "@emotion/react";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import { LogoText } from "../Logo/LogoIcon";
+import {
+  useProportionHook,
+  useProportionSizeHook,
+} from "../../hooks/useWindowHooks";
+import { useWindowContext } from "../../Context/WindowContext";
 
 export function Footer() {
+  const theme = useTheme();
+  const { windowWidth } = useWindowContext();
+  const font = useProportionHook(windowWidth, 16, theme.windowSize.mobile);
+  const icon = useProportionHook(windowWidth, 25, theme.windowSize.mobile);
+  const container = useProportionSizeHook(
+    windowWidth,
+    200,
+    60,
+    theme.windowSize.mobile,
+  );
+
+  const move = (url: string) => {
+    window.location.href = url;
+  };
+
   return (
     <FooterContainer>
-      <FooterContent>
-        <LogoText />
-        <address
-          css={css`
-            font-style: inherit;
-            margin: 1vh 0;
-          `}
-        >
-          지금 바로 문의하세요.
-        </address>
-        <FooterButtons>
-          <TelegramIcon fontSize="large" href="https://about.codle.io" />
-        </FooterButtons>
-      </FooterContent>
+      <div
+        css={css`
+          display: flex;
+
+          align-items: center;
+          justify-content: center;
+          gap: 5vw;
+        `}
+      >
+        <SlideButton
+          label="가입하기"
+          icon={<ArrowForwardIcon />}
+          backgroundColor={theme.mode.cardBackground}
+          buttonBackgroundColor={theme.colors.darkCerulean}
+          buttonSize={container.size}
+          fontSize={font.size}
+          iconSize={icon.size}
+          func={() => move("https://okgonapoli.com/_views/6_main/main.php")}
+        />
+        <SlideButton
+          label="텔레그램"
+          icon={<TelegramIcon />}
+          backgroundColor={theme.mode.cardBackground}
+          buttonBackgroundColor={theme.colors.blueBikini}
+          buttonSize={container.size}
+          fontSize={font.size}
+          iconSize={icon.size}
+          func={() => move("https://t.me/go365")}
+        />
+      </div>
     </FooterContainer>
   );
 }
 
 const FooterContainer = styled.div`
-  position: relative;
-  margin-top: 10vh;
-  transform: translateY(0%);
-  display: flex;
-  align-items: flex-end;
-  gap: 36px;
-
-  background-color: black;
-  color: white;
+  z-index: 1;
+  bottom: 0;
+  position: fixed;
   width: 100%;
+  box-sizing: border-box;
 
-  @media only screen and (max-device-width: 600px) {
-    /* 모바일에서는 로고가 하단에 나옴 */
-    flex-direction: column-reverse;
-    margin: 0 12px;
-    align-items: flex-start;
-  }
-`;
+  padding: 0.8vh 1rem;
 
-const FooterContent = styled.div`
   display: flex;
-  padding: 24px;
   flex-direction: column;
-  gap: 4px;
-  flex: 1 0 0;
-  /* Default/Paragraph/14px-Rg */
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px; /* 142.857% */
-  align-items: center;
-  transform: translateY(0%);
-`;
-
-const FooterButtons = styled.div`
-  display: flex;
-  gap: 12px 8px;
   justify-content: center;
-
-  flex-wrap: wrap;
-  padding: 15px 0;
+  align-items: center;
 `;

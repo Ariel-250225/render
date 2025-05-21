@@ -3,25 +3,16 @@ import styled from "@emotion/styled";
 import { useEffect, useRef, useState } from "react";
 import { css } from "@mui/material";
 import { FuncItem } from "../styled/Button/Button";
-import {
-  CostIcon,
-  GlobalIcon,
-  LotteryIcon,
-  MessageCircleIcon,
-  TrumpIcon,
-} from "../styled/icons";
+import { LotteryIcon, TrumpIcon } from "../styled/icons";
 import { useWindowContext } from "../../Context/WindowContext";
-import {
-  useProportionHook,
-  useProportionSizeHook,
-} from "../../hooks/useWindowHooks";
+import { useProportionHook } from "../../hooks/useWindowHooks";
 import HomeIcon from "@mui/icons-material/Home";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Theme, useTheme } from "@emotion/react";
 import { OPACITY_35 } from "../../Style/theme";
-import { LogoText } from "../Logo/LogoIcon";
+import { Logo } from "../Logo/LogoIcon";
 
 const NAV_MENU = () => {
   const theme = useTheme();
@@ -72,59 +63,22 @@ const NAV_MENU = () => {
 
 export function Header() {
   const theme = useTheme();
-
-  const { windowWidth } = useWindowContext();
-
-  const svgExtent = useProportionSizeHook(
-    windowWidth,
-    20,
-    20,
-    theme.windowSize.mobile,
-  );
-
   return (
     <HeaderWrapper theme={theme}>
-      <LogoText />
-      <HeaderRightFuncUnorderedList size={svgExtent.size} theme={theme}>
-        <li>
-          <HeaderItem
-            label={<CostIcon />}
-            inActiveBackgroundColor={theme.mode.cardBackground}
-            activeBackgroundColor={theme.mode.cardBackground}
-            width={40}
-            func={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-          />
-        </li>
-        <li>
-          <HeaderItem
-            label={<MessageCircleIcon />}
-            inActiveBackgroundColor={theme.mode.cardBackground}
-            activeBackgroundColor={theme.mode.cardBackground}
-            width={40}
-            func={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-          />
-        </li>
-        <li>
-          <HeaderItem
-            label={<GlobalIcon />}
-            inActiveBackgroundColor={theme.mode.cardBackground}
-            activeBackgroundColor={theme.mode.cardBackground}
-            width={40}
-            func={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-          />
-        </li>
-      </HeaderRightFuncUnorderedList>
+      <Logo />
     </HeaderWrapper>
   );
 }
 
-export const HeaderItem = styled(FuncItem)<{
+export const HeaderItem = styled(FuncItem, {
+  shouldForwardProp: (prop) =>
+    ![
+      "width",
+      "isActive",
+      "activeBackgroundColor",
+      "inActiveBackgroundColor",
+    ].includes(prop),
+})<{
   width: number;
   isActive?: boolean;
   inActiveBackgroundColor?: string;
@@ -156,21 +110,9 @@ export const HeaderWrapper = styled.header<{ theme: Theme }>(
     padding: 0.8vh 1rem;
 
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-
-      gap: 1vw;
-
-      li {
-        padding: 0;
-      }
-    }
   `,
 );
 
