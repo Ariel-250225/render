@@ -35,6 +35,8 @@ export function Footer() {
           align-items: center;
           justify-content: center;
           gap: 5vw;
+
+          font-family: ${theme.fontStyle.yesGothicBold};
         `}
       >
         <SlideButton

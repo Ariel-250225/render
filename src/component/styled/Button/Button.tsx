@@ -193,7 +193,7 @@ const SlideButtonContainer = styled("div", {
       min-width: ${width}px;
       min-height: ${height}px;
       border-radius: ${height}px;
-      font-family: ${theme.fontStyle.montserrat};
+      font-family: ${theme.fontStyle.yesGothicExtraBold};
       font-weight: bold;
       cursor: pointer;
       overflow: hidden;
