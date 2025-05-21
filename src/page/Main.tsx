@@ -35,7 +35,7 @@ export function Main() {
     (windowWidth / ASPECT_RATIO.widesScreen.w) * ASPECT_RATIO.widesScreen.h;
 
   const move = (url: string) => {
-    window.location.href = "https://www." + url;
+    window.location.href = "https://" + url;
   };
 
   const { result } = useLinearInterpolation(
@@ -112,7 +112,7 @@ export function Main() {
 
                     font-size: 1.4rem;
                   `}
-                  func={() => move("OKGOSSC.COM")}
+                  func={() => move("okgoscc.com")}
                 />
                 <FuncItem
                   label="OKGOSERIEA.COM"
@@ -124,7 +124,7 @@ export function Main() {
 
                     font-size: 1.4rem;
                   `}
-                  func={() => move("OKGOSERIEA.COM")}
+                  func={() => move("okgoseriea.com")}
                 />
                 <FuncItem
                   label="OKGONAPOLI.COM"
@@ -136,7 +136,7 @@ export function Main() {
 
                     font-size: 1.4rem;
                   `}
-                  func={() => move("OKGONAPOLI.COM")}
+                  func={() => move("okgonapoli.com")}
                 />
               </div>
             </div>
