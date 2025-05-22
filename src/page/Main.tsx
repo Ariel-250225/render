@@ -88,7 +88,7 @@ export function Main() {
               >
                 SSC 나폴리와 함께하는 <br />
                 아시아 최고의 베팅 사이트 <br />
-                OKGO, 가입하세요.
+                OKGO 가입하세요.
               </div>
               <div
                 css={css`
