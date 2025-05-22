@@ -43,7 +43,7 @@ export function Main() {
   const header = document.querySelector("header");
 
   const { result } = useLinearInterpolation(windowWidth, 864, 48, 1728, 82);
-  const pagePadding = useProportionHook(windowWidth, 100, theme.windowSize.HD);
+  const pagePadding = useProportionHook(windowWidth, 200, theme.windowSize.HD);
   return (
     <>
       <PageContainer
@@ -88,7 +88,7 @@ export function Main() {
               >
                 SSC 나폴리와 함께하는 <br />
                 아시아 최고의 베팅 사이트 <br />
-                지금 바로 가입하세요.
+                OKGO 가입하세요.
               </div>
               <div
                 css={css`
