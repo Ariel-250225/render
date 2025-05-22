@@ -106,9 +106,8 @@ export function Main() {
                     css={css`
                       width: 20vw;
                       border: 1px solid ${theme.mode.textPrimary};
-                      background-color: rgba(255, 255, 255, 0);
+                      background-color: #5a5a5a66;
                       font-family: ${theme.fontStyle.roboto};
-
                       font-size: 1.4rem;
                     `}
                     func={() => move(domain)}
