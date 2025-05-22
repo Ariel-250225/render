@@ -5,8 +5,7 @@ import styled from "@emotion/styled";
 import { PageContainer } from "../component/Frame/FrameLayouts";
 import { useWindowContext } from "../Context/WindowContext";
 import { Carousel } from "react-responsive-carousel";
-import cinematic_sports_basketball from "../component/assets/video/cinematic-sports-video-basketball-shoot-on-red-la-clippers-edit.mp4";
-import winning_lebron_james from "../component/assets/video/winning-isnt-for-everyoneagain-lebron-james-nike.mp4";
+import banner from "../component/assets/video/banner.mp4";
 import { ASPECT_RATIO, ContentsContainer } from "../component/layouts/Layouts";
 import { css, Theme, useTheme } from "@emotion/react";
 import { Fragment } from "react";
@@ -20,12 +19,7 @@ import {
 } from "../hooks/useWindowHooks";
 import { GlobalNewsFeed, NewsFeed } from "../component/contents/News";
 
-const ADVERTISEMENT_LIST = [
-  // ea_advertise,
-  cinematic_sports_basketball,
-  // winning_isnt_for_everyone,
-  winning_lebron_james,
-];
+const ADVERTISEMENT_LIST = [banner];
 
 const domainList = ["okgossc.com", "okgoseriea.com", "okgonapoli.com"];
 
@@ -78,18 +72,9 @@ export function Main() {
                 justify-content: center;
                 align-items: center;
                 gap: 30px;
-                margin-top: 30px;
+                margin-top: 40%;
               `}
             >
-              <div
-                css={css`
-                  margin-bottom: 50px;
-                `}
-              >
-                SSC 나폴리와 함께하는 <br />
-                아시아 최고의 베팅 사이트 <br />
-                OKGO 가입하세요.
-              </div>
               <div
                 css={css`
                   display: flex;
