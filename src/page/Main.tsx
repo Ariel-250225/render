@@ -7,7 +7,6 @@ import { useWindowContext } from "../Context/WindowContext";
 import { Carousel } from "react-responsive-carousel";
 import cinematic_sports_basketball from "../component/assets/video/cinematic-sports-video-basketball-shoot-on-red-la-clippers-edit.mp4";
 import winning_lebron_james from "../component/assets/video/winning-isnt-for-everyoneagain-lebron-james-nike.mp4";
-import fullPerimeter from "../component/assets/video/full_perimeter.mp4";
 import { ASPECT_RATIO, ContentsContainer } from "../component/layouts/Layouts";
 import { css, Theme, useTheme } from "@emotion/react";
 import { Fragment } from "react";
@@ -116,15 +115,6 @@ export function Main() {
               </div>
             </div>
           </div>
-          <video
-            width={windowWidth}
-            src={fullPerimeter}
-            controls={false}
-            playsInline
-            autoPlay
-            muted
-            loop
-          />
           <Carousel
             showArrows={false}
             showStatus={false}
