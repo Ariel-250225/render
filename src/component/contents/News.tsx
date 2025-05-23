@@ -8,6 +8,7 @@ import news_3 from "../assets/image/news/news_3.jpg";
 import globalNews_1 from "../assets/image/news/global_news_1.jpg";
 import globalNews_2 from "../assets/image/news/global_news_2.jpg";
 import { ICoinLogo } from "../IcoinsLogo";
+import { useWindowContext } from "../../Context/WindowContext";
 
 export function GlobalNewsFeed() {
   const theme = useTheme();
@@ -74,7 +75,8 @@ export function GlobalNewsFeed() {
 
 export function NewsFeed() {
   const theme = useTheme();
-
+  const { windowWidth } = useWindowContext();
+  const isMobile = windowWidth <= theme.windowSize.mobile;
   return (
     <NewsFeedContainer theme={theme}>
       <NewsCard
@@ -116,7 +118,7 @@ export function NewsFeed() {
         width={20}
         banner={
           <BannerImageCase width={28}>
-            <ICoinLogo fontSize={50} />
+            <ICoinLogo fontSize={isMobile ? 80 : 50} />
           </BannerImageCase>
         }
         color={theme.colors.azure}
@@ -190,6 +192,10 @@ const FeedTitle = styled.span<{
     font-size: ${fontSize}em;
     font-weight: ${fontWeight};
     font-family: ${theme.fontStyle.roboto};
+
+    @media ${theme.deviceSize.phone} {
+      font-size: ${fontSize + 2.4}em;
+    }
   `,
 );
 
@@ -197,6 +203,10 @@ const FeedDescription = styled.span<{ fontSize: number; theme: Theme }>(
   ({ fontSize, theme }) => css`
     font-size: ${fontSize}em;
     font-family: ${theme.fontStyle.yesGothicMedium};
+
+    @media ${theme.deviceSize.phone} {
+      font-size: ${fontSize + 2.2}em;
+    }
   `,
 );
 

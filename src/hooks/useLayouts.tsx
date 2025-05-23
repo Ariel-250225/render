@@ -10,7 +10,7 @@ export function useItemResizing(
   const theme = useTheme();
 
   const isTablet = windowWidth < theme.windowSize.HD;
-  const isMobile = windowWidth < theme.windowSize.tablet;
+  const isMobile = windowWidth <= theme.windowSize.tablet;
   const moveParam = isTablet ? 1 : moveFactor;
 
   const itemWidth =

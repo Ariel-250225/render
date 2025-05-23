@@ -136,12 +136,16 @@ export function Main() {
             css={css`
               margin: 2vh 0;
               text-align: center;
-              font-size: 2.4vw;
               display: flex;
               flex-direction: column;
               align-items: center;
               justify-content: center;
               font-family: ${theme.fontStyle.koPubDotumBold};
+              font-size: 2.4vw;
+
+              @media ${theme.deviceSize.phone} {
+                font-size: 4vw;
+              }
             `}
           >
             <span
@@ -149,13 +153,11 @@ export function Main() {
                 margin-bottom: 3.5vh;
               `}
             >
-              온라인 카지노, 스포츠 베팅, 슬롯게임, 그리고 세계 최고의 축구팀의
-              파트너쉽과 <br />
-              암호화폐 시스템까지,
+              OKGO는 세계 최고의 보안 시스템, <br /> 최고의 축구팀과 파트너십{" "}
+              <br />
+              최신 암호화폐 거래 시스템,
             </span>
-            <span>
-              오직 OKGO 에서만 누릴 수 있는 제한없는 자유를 체험해보세요.
-            </span>
+            <span>안전하고 제한없는 자유 베팅 제공</span>
           </div>
         </ContentsContainer>
         <ContentsContainer>
@@ -271,12 +273,16 @@ export function Main() {
             css={css`
               margin: 2vh 0;
               text-align: center;
-              font-size: 1.8vw;
               display: flex;
               flex-direction: column;
               align-items: center;
               justify-content: center;
               font-family: ${theme.fontStyle.koPubDotumBold};
+              font-size: 2.4vw;
+
+              @media ${theme.deviceSize.phone} {
+                font-size: 4vw;
+              }
             `}
           >
             <span
@@ -304,12 +310,16 @@ export function Main() {
             css={css`
               margin: 2vh 0;
               text-align: center;
-              font-size: 2.4vw;
               display: flex;
               flex-direction: column;
               align-items: center;
               justify-content: center;
               font-family: ${theme.fontStyle.koPubDotumBold};
+              font-size: 2.4vw;
+
+              @media ${theme.deviceSize.phone} {
+                font-size: 4vw;
+              }
             `}
           >
             <span

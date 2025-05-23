@@ -171,6 +171,9 @@ function Blockquote(props: {
   size: number;
 }) {
   const { color, contents, size } = props;
+  const theme = useTheme();
+  const { windowWidth } = useWindowContext();
+  const isMobile = windowWidth <= theme.windowSize.mobile;
   return (
     <BlockquoteContainer>
       <BlockquoteCover
@@ -178,8 +181,8 @@ function Blockquote(props: {
         viewBox="0 0 475.082 475.081"
         x="0px"
         y="0px"
-        width={size}
-        height={size}
+        width={isMobile ? size + 10 : size}
+        height={isMobile ? size + 10 : size}
         xmlnsXlink="http://www.w3.org/XML/1998/namespace"
         xmlSpace="preserve"
         version="1.1"
@@ -192,7 +195,7 @@ function Blockquote(props: {
           </g>
         </g>
       </BlockquoteCover>
-      <Contents>{contents}</Contents>
+      <Contents theme={theme}>{contents}</Contents>
     </BlockquoteContainer>
   );
 }
@@ -207,9 +210,12 @@ const BlockquoteCover = styled.svg<{ color: string }>(
   `,
 );
 
-const Contents = styled.div`
-  margin-top: 0.5rem;
-`;
+const Contents = styled.div<{ theme: Theme }>(
+  ({ theme }) => css`
+    margin-top: 0.5rem;
+    font-family: ${theme.fontStyle.nanumGothic};
+  `,
+);
 
 function CardFooter(props: {
   color: string;

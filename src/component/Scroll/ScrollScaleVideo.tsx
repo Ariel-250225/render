@@ -3,10 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import advertisement from "../assets/video/napoli-advertisement.mp4";
-import { css } from "@emotion/react";
+import { css, Theme, useTheme } from "@emotion/react";
 
 export function ScrollScaleVideo(props: { windowWidth: number }) {
   const { windowWidth } = props;
+  const theme = useTheme();
   const maxWidth = windowWidth;
   const wrapperRef = useRef<HTMLDivElement>(null);
   const descriptionRef = useRef<HTMLDivElement>(null);
@@ -93,7 +94,7 @@ export function ScrollScaleVideo(props: { windowWidth: number }) {
         maxWidth={maxWidth}
       >
         <ContentsTitle>WHO IS NEXT?</ContentsTitle>
-        <DescriptionText>
+        <DescriptionText theme={theme}>
           <span>당신이 생각하는 최고의 팀과 함께합니다.</span>
           <div>
             <span>우리의 다음 파트너를 알려주세요.</span>
@@ -149,14 +150,18 @@ const ContentsTitle = styled.h1`
   margin-bottom: 3vh;
 `;
 
-const DescriptionText = styled.div`
+const DescriptionText = styled.div<{ theme: Theme }>`
   margin: 2vh 0;
   text-align: center;
-  font-size: clamp(14px, 1.8vw, 22px);
+  font-size: clamp(23px, 3vw, 32px);
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: ${({ theme }) => theme.fontStyle.koPubDotumBold};
+
+  @media ${({ theme }) => theme.deviceSize.phone} {
+    font-size: clamp(23px, 3vw, 32px);
+  }
 
   & > span {
     margin: 2vh 0;
