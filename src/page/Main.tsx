@@ -153,7 +153,7 @@ export function Main() {
                 margin-bottom: 3.5vh;
               `}
             >
-              OKGO는 세계 최고의 보안 시스템, <br /> 최고의 축구팀과 파트너십{" "}
+              OKGO는 세계 최고의 보안 시스템, <br /> 최고의 축구팀과 파트너십,
               <br />
               최신 암호화폐 거래 시스템,
             </span>
