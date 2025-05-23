@@ -335,12 +335,10 @@ export function Main() {
         <ContentsContainer>
           <SlotGames />
         </ContentsContainer>
-        <PageContainer theme={theme} width={windowWidth}>
-          <ContentsContainer>
-            <ContentsTitle theme={theme}>GLOBAL PARTNER</ContentsTitle>
-            <ScrollScaleVideo windowWidth={windowWidth} />
-          </ContentsContainer>
-        </PageContainer>
+        <ContentsContainer>
+          <ContentsTitle theme={theme}>GLOBAL PARTNER</ContentsTitle>
+          <ScrollScaleVideo windowWidth={windowWidth} />
+        </ContentsContainer>
       </PageContainer>
     </>
   );

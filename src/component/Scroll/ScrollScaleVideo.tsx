@@ -17,6 +17,8 @@ export function ScrollScaleVideo(props: { windowWidth: number }) {
   const SCALE_START_POINT = 0.3;
   const DESCRIPTION_SHOW_SCALE = 1.1;
 
+  const [conatinerScale, setConatinerScale] = useState(1);
+
   const [scale, setScale] = useState(MAX_SCALE);
   const [descriptionOpacity, setDescriptionOpacity] = useState(0);
   const [descriptionTranslateY, setDescriptionTranslateY] = useState("-10%");
@@ -40,7 +42,9 @@ export function ScrollScaleVideo(props: { windowWidth: number }) {
       );
 
       const newScale = 1 + (MAX_SCALE - 1) * (1 - progress);
+      const newContainerScale = 1 + (MAX_SCALE - 1) * (1 - progress);
       setScale(newScale);
+      setConatinerScale(newContainerScale);
 
       // 설명문 애니메이션
       if (newScale <= DESCRIPTION_SHOW_SCALE) {
@@ -68,6 +72,7 @@ export function ScrollScaleVideo(props: { windowWidth: number }) {
         css={css`
           margin: 0 auto;
         `}
+        scale={conatinerScale}
       >
         <VideoScaleContainer scale={scale}>
           <video
@@ -115,9 +120,13 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const VideoWrapper = styled.div`
+const VideoWrapper = styled.div<{ scale: number }>`
   width: 100%;
   overflow: hidden;
+  transform: ${({ scale }) => `scale(${scale})`};
+  transform-origin: center top;
+  will-change: transform;
+  transition: transform 0.1s linear;
 `;
 
 const VideoScaleContainer = styled.div<{ scale: number }>`
