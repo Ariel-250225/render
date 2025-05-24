@@ -164,7 +164,10 @@ export function Main() {
               >
                 <LogoIcon
                   css={css`
-                    width: 15vw;
+                    width: 10vw;
+                    @media ${theme.deviceSize.phone} {
+                      width: 15vw;
+                    }
                   `}
                 />
                 <span css={css``}>는 세계 최고의 보안 시스템,</span>
