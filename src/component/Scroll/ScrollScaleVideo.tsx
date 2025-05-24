@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import advertisement from "../assets/video/napoli-advertisement.mp4";
+import advertisement from "../assets/video/napoli_highlight.mp4";
 import { css, Theme, useTheme } from "@emotion/react";
 
 export function ScrollScaleVideo(props: { windowWidth: number }) {
