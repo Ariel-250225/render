@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
 import styled from "@emotion/styled";
 import { PageContainer } from "../component/Frame/FrameLayouts";
 import { useWindowContext } from "../Context/WindowContext";
@@ -18,6 +17,7 @@ import {
   useProportionHook,
 } from "../hooks/useWindowHooks";
 import { GlobalNewsFeed, NewsFeed } from "../component/contents/News";
+import { LogoIcon } from "../component/Logo/LogoIcon";
 
 const ADVERTISEMENT_LIST = [banner];
 
@@ -88,11 +88,11 @@ export function Main() {
                   <FuncItem
                     label={domain.toUpperCase()}
                     css={css`
-                      width: 20vw;
+                      width: 25vw;
                       border: 1px solid ${theme.mode.textPrimary};
                       background-color: #5a5a5a66;
                       font-family: ${theme.fontStyle.roboto};
-                      font-size: 1.4rem;
+                      font-size: 2.5rem;
                     `}
                     func={() => move(domain)}
                   />
@@ -148,15 +148,31 @@ export function Main() {
               }
             `}
           >
-            <span
+            <div
               css={css`
                 margin-bottom: 3.5vh;
               `}
             >
-              OKGO는 세계 최고의 보안 시스템, <br /> 최고의 축구팀과 파트너십,
+              <div
+                css={css`
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                  align-items: center;
+                  padding: 0;
+                `}
+              >
+                <LogoIcon
+                  css={css`
+                    width: 15vw;
+                  `}
+                />
+                <span css={css``}>는 세계 최고의 보안 시스템,</span>
+              </div>
+              최고의 축구팀과 파트너십,
               <br />
               최신 암호화폐 거래 시스템,
-            </span>
+            </div>
             <span>안전하고 제한없는 자유 베팅 제공</span>
           </div>
         </ContentsContainer>

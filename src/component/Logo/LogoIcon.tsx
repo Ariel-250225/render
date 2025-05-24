@@ -5,6 +5,10 @@ import logoImage from "./logo.png";
 import sscNapoli from "../assets/image/news/SSC_Napoli.png";
 import { Divider } from "../layouts/Layouts";
 
+export function LogoIcon(props: { className?: string }) {
+  return <img className={props.className} src={logoImage} alt="logo"></img>;
+}
+
 export function LogoText() {
   const theme = useTheme();
   return <LogoTextCase theme={theme}>OKGO.COM</LogoTextCase>;
@@ -43,6 +47,10 @@ export function Logo() {
         alt="logo"
         css={css`
           width: 8em;
+
+          @media ${theme.deviceSize.phone} {
+            width: 15em;
+          }
         `}
       />
       <Divider theme={theme} />
@@ -64,13 +72,22 @@ export function Logo() {
             width: 3em;
 
             border-radius: 50%;
+
+            @media ${theme.deviceSize.phone} {
+              width: 5em;
+            }
           `}
         />
         <span
           css={css`
-            font-size: 2.6em;
             font-family: ${theme.fontStyle.roboto};
+            font-size: 2.6em;
             font-weight: 600;
+
+            @media ${theme.deviceSize.phone} {
+              font-size: 4.6em;
+              font-weight: 800;
+            }
           `}
         >
           SSC Napoli
