@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { PageContainer } from "../component/Frame/FrameLayouts";
 import { useWindowContext } from "../Context/WindowContext";
 import banner from "../component/assets/video/banner.mp4";
-import { ContentsContainer } from "../component/layouts/Layouts";
+import { ASPECT_RATIO, ContentsContainer } from "../component/layouts/Layouts";
 import { css, Theme, useTheme } from "@emotion/react";
 import { useRef } from "react";
 import { FuncItem } from "../component/styled/Button/Button";
@@ -12,7 +12,6 @@ import { useLinearInterpolation } from "../hooks/useWindowHooks";
 import { AdCardSection } from "../component/contents/AdCardSection";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-import { ScrollScaleVideo } from "../component/Scroll/ScrollScaleVideo";
 
 const domainList = ["okgossc.com", "okgoseriea.com", "okgonapoli.com"];
 
@@ -31,6 +30,9 @@ export function Main() {
 
   const { result } = useLinearInterpolation(windowWidth, 864, 48, 1728, 82);
   const isDesktop = windowWidth >= theme.windowSize.HD;
+
+  const itemHeight =
+    (windowWidth / ASPECT_RATIO.widesScreen.w) * ASPECT_RATIO.widesScreen.h;
 
   const scrollNext = () => {
     const container = scrollRef.current;
@@ -59,7 +61,7 @@ export function Main() {
     <>
       <PageContainer
         width={windowWidth}
-        gap={1}
+        gap={5}
         theme={theme}
         marginTop={header ? header.offsetHeight : result}
       >
@@ -92,7 +94,16 @@ export function Main() {
               `}
             ></div>
           </div>
-          <ScrollScaleVideo windowWidth={windowWidth - 200} video={banner} />
+          <video
+            width={windowWidth}
+            height={itemHeight}
+            src={banner}
+            controls={false}
+            playsInline
+            autoPlay
+            muted
+            loop
+          />
           <ContentsContainer>
             <div
               css={css`
