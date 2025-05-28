@@ -139,6 +139,7 @@ export function Main() {
                   css={css`
                     width: 25vw;
                     font-family: ${theme.fontStyle.iBrand};
+                    background-color: ${theme.mode.buttonHoverBackground};
                     font-size: 2.5rem;
                   `}
                   func={() => move(domain)}
