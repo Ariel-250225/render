@@ -89,36 +89,52 @@ export function Main() {
                 justify-content: center;
                 align-items: center;
                 gap: 30px;
-                margin-top: 40%;
               `}
-            >
-              <div
-                css={css`
-                  display: flex;
-                  flex-direction: row;
-                  align-items: center;
-                  justify-content: center;
-                  gap: 8px;
-                `}
-              >
-                {domainList.map((domain) => (
-                  <FuncItem
-                    key={domain}
-                    label={domain.toUpperCase()}
-                    css={css`
-                      width: 25vw;
-                      border: 1px solid ${theme.mode.textPrimary};
-                      background-color: #5a5a5a66;
-                      font-family: ${theme.fontStyle.roboto};
-                      font-size: 2.5rem;
-                    `}
-                    func={() => move(domain)}
-                  />
-                ))}
-              </div>
-            </div>
+            ></div>
           </div>
           <ScrollScaleVideo windowWidth={windowWidth - 200} video={banner} />
+          <ContentsContainer>
+            <div
+              css={css`
+                display: flex;
+                box-sizing: border-box;
+                padding-left: 3%;
+                justify-content: space-between;
+                align-items: flex-end;
+                width: 100%;
+                margin-top: 2%;
+
+                h2 {
+                  margin: 0;
+                }
+              `}
+            >
+              <ContentsTitle theme={theme}>JOIN US</ContentsTitle>
+            </div>
+            <div
+              css={css`
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 2%;
+              `}
+            >
+              {domainList.map((domain) => (
+                <FuncItem
+                  key={domain}
+                  label={domain.toUpperCase()}
+                  css={css`
+                    width: 25vw;
+                    font-family: ${theme.fontStyle.iBrand};
+                    font-size: 2.5rem;
+                  `}
+                  func={() => move(domain)}
+                />
+              ))}
+            </div>
+          </ContentsContainer>
         </CarouselContainer>
         <ContentsContainer>
           <div
@@ -160,7 +176,6 @@ export function Main() {
         >
           <AdCardSection ref={adCardRef} />
         </ContentsContainer>
-
         <div
           css={css`
             width: 100%;
