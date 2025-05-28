@@ -8,7 +8,6 @@ import news_3 from "../assets/image/news/news_3.jpg";
 import globalNews_1 from "../assets/image/news/global_news_1.jpg";
 import globalNews_2 from "../assets/image/news/global_news_2.jpg";
 import iCoinLogo from "../assets/image/iCoinVertical.png";
-import { useWindowContext } from "../../Context/WindowContext";
 
 export function GlobalNewsFeed() {
   const theme = useTheme();
@@ -75,8 +74,6 @@ export function GlobalNewsFeed() {
 
 export function NewsFeed() {
   const theme = useTheme();
-  const { windowWidth } = useWindowContext();
-  const isMobile = windowWidth <= theme.windowSize.mobile;
   return (
     <NewsFeedContainer theme={theme}>
       <NewsCard
