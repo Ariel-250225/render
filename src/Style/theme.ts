@@ -127,7 +127,8 @@ const colors = {
 
   crimsonRed: "#B22222",
 
-  // ✅ Special Colors
+  lameGreen: "#00A349",
+  lawnGreen: "#7CFC00",
   luxuryGreen: "#356358",
   gold: "#D7BC6A",
   lightGold: "#F3E1A9",
@@ -207,7 +208,7 @@ const defaultMode = {
       item: fontStyle.appleNeoBold,
     },
     component: {
-      mainTitle: fontStyle.montserrat,
+      mainTitle: fontStyle.yesGothicExtraBold,
       itemTitle: fontStyle.sCoreDreamBold,
     },
     dynamicIsland: {
@@ -295,7 +296,7 @@ const lightMode = {
       item: fontStyle.appleNeoBold,
     },
     component: {
-      mainTitle: fontStyle.montserrat,
+      mainTitle: fontStyle.sCoreDreamMedium,
       itemTitle: fontStyle.sCoreDreamBold,
     },
     dynamicIsland: {

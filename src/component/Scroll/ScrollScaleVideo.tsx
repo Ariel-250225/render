@@ -1,62 +1,35 @@
 /** @jsxImportSource @emotion/react */
 import { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
-import TelegramIcon from "@mui/icons-material/Telegram";
-import advertisement from "../assets/video/napoli_highlight.mp4";
-import { css, Theme, useTheme } from "@emotion/react";
+import { css } from "@emotion/react";
 
-export function ScrollScaleVideo(props: { windowWidth: number }) {
-  const { windowWidth } = props;
-  const theme = useTheme();
-  const maxWidth = windowWidth;
+export function ScrollScaleVideo(props: {
+  windowWidth: number;
+  video: string;
+}) {
+  const { video } = props;
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const descriptionRef = useRef<HTMLDivElement>(null);
-
   // 조정 가능한 매개변수들
-  const MAX_SCALE = 1.18;
-  const SCALE_START_POINT = 0.3;
-  const DESCRIPTION_SHOW_SCALE = 1.1;
 
-  const [conatinerScale, setConatinerScale] = useState(1);
+  const [matrix, setMatrix] = useState("matrix(1, 0, 0, 1, 0, 0)");
+  const [clipPath, setClipPath] = useState("inset(0% round 0px)");
 
-  const [scale, setScale] = useState(MAX_SCALE);
-  const [descriptionOpacity, setDescriptionOpacity] = useState(0);
-  const [descriptionTranslateY, setDescriptionTranslateY] = useState("-10%");
+  const MAX_REDUCTION = 0.99;
+  const MAX_INSET = 2.5;
+  const MAX_RADIUS = 16;
+  const MAX_SCROLL = 1000; // 이만큼 내리면 최대 효과 적용
 
   useEffect(() => {
-    const wrapperElement = wrapperRef.current;
-    if (!wrapperElement) return;
-
     const handleScroll = () => {
-      const { top, height } = wrapperElement.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
+      const y = window.scrollY;
+      const progress = Math.min(1, y / MAX_SCROLL);
 
-      // [수정] 효과 범위 계산 (시작점과 끝점을 반대로 적용)
-      const startPoint = viewportHeight * 1; // 화면 상단 20% 지점에서 시작
-      const endPoint = -height * SCALE_START_POINT; // 요소가 화면 위로 30% 나갔을 때 끝
+      const scale = 1 - (1 - MAX_REDUCTION) * progress;
+      const inset = MAX_INSET * progress;
+      const radius = MAX_RADIUS * progress;
 
-      // [수정] 진행도 계산 (1 → 0)
-      const progress = Math.min(
-        1,
-        Math.max(0, (top - startPoint) / (endPoint - startPoint)),
-      );
-
-      const newScale = 1 + (MAX_SCALE - 1) * (1 - progress);
-      const newContainerScale = 1 + (MAX_SCALE - 1) * (1 - progress);
-      setScale(newScale);
-      setConatinerScale(newContainerScale);
-
-      // 설명문 애니메이션
-      if (newScale <= DESCRIPTION_SHOW_SCALE) {
-        const opacityProgress =
-          (DESCRIPTION_SHOW_SCALE - newScale) / (DESCRIPTION_SHOW_SCALE - 1);
-        const newOpacity = Math.min(1, Math.max(0, opacityProgress));
-        setDescriptionOpacity(newOpacity);
-        setDescriptionTranslateY(`-${10 * (1 - opacityProgress)}%`);
-      } else {
-        setDescriptionOpacity(0);
-        setDescriptionTranslateY("-10%");
-      }
+      setMatrix(`matrix(${scale}, 0, 0, ${scale}, 0, 0)`);
+      setClipPath(`inset(${inset}% round ${radius}px)`);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -67,49 +40,22 @@ export function ScrollScaleVideo(props: { windowWidth: number }) {
 
   return (
     <Container>
-      <VideoWrapper
-        ref={wrapperRef}
-        css={css`
-          margin: 0 auto;
-        `}
-        scale={conatinerScale}
-      >
-        <VideoScaleContainer scale={scale}>
-          <video
-            width="100%"
-            src={advertisement}
-            controls={false}
-            autoPlay
-            muted
-            playsInline
-            loop
-            css={css`
-              display: block;
-              width: 100%;
-              height: auto;
-            `}
-          />
-        </VideoScaleContainer>
+      <VideoWrapper ref={wrapperRef} matrix={matrix} clipPath={clipPath}>
+        <video
+          width="100%"
+          src={video}
+          controls={false}
+          autoPlay
+          muted
+          playsInline
+          loop
+          css={css`
+            display: block;
+            width: 100%;
+            height: auto;
+          `}
+        />
       </VideoWrapper>
-
-      <DescriptionContainer
-        opacity={descriptionOpacity}
-        translateY={descriptionTranslateY}
-        ref={descriptionRef}
-        maxWidth={maxWidth}
-      >
-        <ContentsTitle>WHO IS NEXT?</ContentsTitle>
-        <DescriptionText theme={theme}>
-          <span>당신이 생각하는 최고의 팀과 함께합니다.</span>
-          <div>
-            <span>우리의 다음 파트너를 알려주세요.</span>
-            <TelegramIcon
-              fontSize="large"
-              sx={{ width: "1.5em", height: "1.5em", cursor: "pointer" }}
-            />
-          </div>
-        </DescriptionText>
-      </DescriptionContainer>
     </Container>
   );
 }
@@ -120,65 +66,14 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const VideoWrapper = styled.div<{ scale: number }>`
+const VideoWrapper = styled.div<{ matrix: string; clipPath: string }>`
   width: 100%;
   overflow: hidden;
-  transform: ${({ scale }) => `scale(${scale})`};
+  transform: ${({ matrix }) => matrix};
+  clip-path: ${({ clipPath }) => clipPath};
   transform-origin: center top;
-  will-change: transform;
-  transition: transform 0.1s linear;
-`;
-
-const VideoScaleContainer = styled.div<{ scale: number }>`
-  transform: ${({ scale }) => `scale(${scale})`};
-  transform-origin: center top;
-  will-change: transform;
-  transition: transform 0.1s linear;
-  margin: 4vh 0;
-`;
-
-const DescriptionContainer = styled.div<{
-  opacity: number;
-  translateY: string;
-  maxWidth: number;
-}>(
-  ({ opacity, translateY, maxWidth }) => css`
-    opacity: ${opacity};
-    transform: translateY(${translateY});
-    transition: all 0.3s ease-out;
-    text-align: center;
-    margin: 5vh 0 15vh;
-    width: 100%;
-    max-width: ${maxWidth}px;
-  `,
-);
-
-const ContentsTitle = styled.h1`
-  font-size: clamp(24px, 3vw, 48px);
-  font-weight: bold;
-  margin-bottom: 3vh;
-`;
-
-const DescriptionText = styled.div<{ theme: Theme }>`
-  margin: 2vh 0;
-  text-align: center;
-  font-size: clamp(23px, 3vw, 32px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: ${({ theme }) => theme.fontStyle.koPubDotumBold};
-
-  @media ${({ theme }) => theme.deviceSize.phone} {
-    font-size: clamp(23px, 3vw, 32px);
-  }
-
-  & > span {
-    margin: 2vh 0;
-  }
-
-  & > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  will-change: transform, clip-path;
+  transition:
+    transform 0.1s linear,
+    clip-path 0.1s linear;
 `;

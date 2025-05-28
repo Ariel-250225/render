@@ -3,23 +3,16 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import styled from "@emotion/styled";
 import { PageContainer } from "../component/Frame/FrameLayouts";
 import { useWindowContext } from "../Context/WindowContext";
-import { Carousel } from "react-responsive-carousel";
 import banner from "../component/assets/video/banner.mp4";
-import { ASPECT_RATIO, ContentsContainer } from "../component/layouts/Layouts";
+import { ContentsContainer } from "../component/layouts/Layouts";
 import { css, Theme, useTheme } from "@emotion/react";
-import { Fragment } from "react";
-import { Sports } from "../component/Game/Sports";
-import { SlotGames } from "../component/Games";
+import { useRef } from "react";
 import { FuncItem } from "../component/styled/Button/Button";
+import { useLinearInterpolation } from "../hooks/useWindowHooks";
+import { AdCardSection } from "../component/contents/AdCardSection";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import { ScrollScaleVideo } from "../component/Scroll/ScrollScaleVideo";
-import {
-  useLinearInterpolation,
-  useProportionHook,
-} from "../hooks/useWindowHooks";
-import { GlobalNewsFeed, NewsFeed } from "../component/contents/News";
-import { LogoIcon } from "../component/Logo/LogoIcon";
-
-const ADVERTISEMENT_LIST = [banner];
 
 const domainList = ["okgossc.com", "okgoseriea.com", "okgonapoli.com"];
 
@@ -27,8 +20,8 @@ export function Main() {
   const theme = useTheme();
   const { windowWidth } = useWindowContext();
 
-  const itemHeight =
-    (windowWidth / ASPECT_RATIO.widesScreen.w) * ASPECT_RATIO.widesScreen.h;
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const adCardRef = useRef<HTMLDivElement>(null);
 
   const move = (url: string) => {
     window.location.href = "https://" + url;
@@ -37,12 +30,36 @@ export function Main() {
   const header = document.querySelector("header");
 
   const { result } = useLinearInterpolation(windowWidth, 864, 48, 1728, 82);
-  const pagePadding = useProportionHook(windowWidth, 200, theme.windowSize.HD);
+  const isDesktop = windowWidth >= theme.windowSize.HD;
+
+  const scrollNext = () => {
+    const container = scrollRef.current;
+    const card = adCardRef.current;
+
+    if (!container || !card) return;
+
+    const cardWidth = card.clientWidth;
+    const gap = 0;
+
+    container.scrollLeft += cardWidth + gap;
+  };
+
+  const scrollPrev = () => {
+    const container = scrollRef.current;
+    const card = adCardRef.current;
+
+    if (!container || !card) return;
+
+    const cardWidth = card.clientWidth;
+    const gap = 10;
+    container.scrollLeft -= cardWidth + gap;
+  };
+
   return (
     <>
       <PageContainer
-        width={windowWidth - pagePadding.size}
-        gap={20}
+        width={windowWidth}
+        gap={1}
         theme={theme}
         marginTop={header ? header.offsetHeight : result}
       >
@@ -86,6 +103,7 @@ export function Main() {
               >
                 {domainList.map((domain) => (
                   <FuncItem
+                    key={domain}
                     label={domain.toUpperCase()}
                     css={css`
                       width: 25vw;
@@ -100,264 +118,76 @@ export function Main() {
               </div>
             </div>
           </div>
-          <Carousel
-            showArrows={false}
-            showStatus={false}
-            showIndicators={false}
-            autoPlay={true}
-            infiniteLoop={true}
-            stopOnHover={false}
-            interval={40000}
-            transitionTime={1000}
-            showThumbs={false}
-          >
-            {ADVERTISEMENT_LIST.map((video, index) => (
-              <Fragment key={index}>
-                <video
-                  width={windowWidth}
-                  height={itemHeight}
-                  src={video}
-                  controls={false}
-                  playsInline
-                  autoPlay
-                  muted
-                  loop
-                  css={css`
-                    z-index: -1;
-                  `}
-                />
-              </Fragment>
-            ))}
-          </Carousel>
+          <ScrollScaleVideo windowWidth={windowWidth - 200} video={banner} />
         </CarouselContainer>
         <ContentsContainer>
-          <ContentsTitle theme={theme}>COMPANY</ContentsTitle>
           <div
             css={css`
-              margin: 2vh 0;
-              text-align: center;
               display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              font-family: ${theme.fontStyle.koPubDotumBold};
-              font-size: 2.4vw;
-
-              @media ${theme.deviceSize.phone} {
-                font-size: 4vw;
-              }
-            `}
-          >
-            <div
-              css={css`
-                margin-bottom: 3.5vh;
-              `}
-            >
-              <div
-                css={css`
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: center;
-                  align-items: center;
-                  padding: 0;
-                `}
-              >
-                <LogoIcon
-                  css={css`
-                    width: 10vw;
-                    @media ${theme.deviceSize.phone} {
-                      width: 15vw;
-                    }
-                  `}
-                />
-                <span css={css``}>는 세계 최고의 보안 시스템,</span>
-              </div>
-              최고의 축구팀과 파트너십,
-              <br />
-              최신 암호화폐 거래 시스템,
-            </div>
-            <span>안전하고 제한없는 자유 베팅 제공</span>
-          </div>
-        </ContentsContainer>
-        <ContentsContainer>
-          <ContentsTitle theme={theme}>WHAT IS NEXT?</ContentsTitle>
-          <div
-            css={css`
+              box-sizing: border-box;
+              padding-left: 3%;
+              justify-content: space-between;
+              align-items: flex-end;
               width: 100%;
-              margin: 8vh 0;
-              text-align: center;
-              display: flex;
-              flex-direction: column;
-              align-items: flex-start;
-              justify-content: center;
-              font-family: ${theme.fontStyle.koPubDotumBold};
-            `}
-          >
-            <div
-              css={css`
-                position: relative;
-                width: 100%;
-                right: 0;
-              `}
-            >
-              <div
-                css={css`
-                  position: absolute;
-                  width: 2vw;
-                  height: 2vw;
-                  border: 2px solid white;
-                  border-radius: 50%;
-                  transform: translateY(-50%);
-                  left: 0;
-                  z-index: 1;
 
-                  ::before {
-                    content: "";
-                    position: absolute;
-                    background-color: white;
-                    width: 0.8vw;
-                    height: 0.8vw;
-                    left: 50%;
-                    top: 50%;
-                    border-radius: 50%;
-                    transform: translate(-50%, -50%);
-                  }
-                `}
-              />
-              <div
-                css={css`
-                  position: absolute;
-                  width: 2vw;
-                  height: 2vw;
-                  border: 2px solid white;
-                  border-radius: 50%;
-                  transform: translateY(-50%) translateX(10%);
-                  right: 50%;
-                  z-index: 1;
-
-                  ::before {
-                    content: "";
-                    position: absolute;
-                    background-color: ${theme.mode.textAccent};
-                    width: 0.8vw;
-                    height: 0.8vw;
-                    left: 50%;
-                    top: 50%;
-                    border-radius: 50%;
-                    transform: translate(-50%, -50%);
-                  }
-
-                  ::after {
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    border-radius: ${theme.borderRadius.circle};
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    opacity: 0;
-                    animation: pulseEffect 1.2s infinite; /* ✅ 반복적으로 효과 적용 */
-                  }
-
-                  @keyframes pulseEffect {
-                    0% {
-                      opacity: 0.6;
-                      box-shadow: 0 0 10px 5px ${theme.mode.textAccent};
-                    }
-                    50% {
-                      opacity: 0.3;
-                      box-shadow: 0 0 20px 12px transparent;
-                    }
-                    100% {
-                      opacity: 0;
-                      box-shadow: 0 0 30px 18px transparent;
-                    }
-                  }
-                `}
-              />
-              <div
-                css={css`
-                  position: absolute;
-                  background-color: white;
-                  width: 47.8%;
-                  height: 1px;
-                  transform: translateX(3%);
-                  z-index: 0;
-                `}
-              />
-            </div>
-          </div>
-          <div
-            css={css`
-              margin: 2vh 0;
-              text-align: center;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              font-family: ${theme.fontStyle.koPubDotumBold};
-              font-size: 2.4vw;
-
-              @media ${theme.deviceSize.phone} {
-                font-size: 4vw;
+              h2 {
+                margin: 0;
               }
             `}
           >
-            <span
-              css={css`
-                margin-bottom: 3.5vh;
-              `}
-            >
-              우리의 다음은 고객님들의 피드백입니다.
-            </span>
-            <span>고객님의 선택이 앞으로를 만듭니다.</span>
+            <ContentsTitle theme={theme}>WHY OKGO?</ContentsTitle>
           </div>
         </ContentsContainer>
-        <ContentsContainer>
-          <ContentsTitle theme={theme}>GLOBAL NEWS FEED</ContentsTitle>
-          <GlobalNewsFeed />
-        </ContentsContainer>
-        <ContentsContainer>
-          <ContentsTitle theme={theme}>NEWS FEED</ContentsTitle>
-          <NewsFeed />
-        </ContentsContainer>
-        <ContentsContainer>
-          <ContentsTitle theme={theme}>LET`S PLAY</ContentsTitle>
-          <Sports title="" />
-          <div
-            css={css`
-              margin: 2vh 0;
-              text-align: center;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              font-family: ${theme.fontStyle.koPubDotumBold};
-              font-size: 2.4vw;
+        <ContentsContainer
+          ref={scrollRef}
+          css={css`
+            width: 100%;
+            align-items: flex-start;
+            padding: ${isDesktop ? "1% 2%" : "2%"};
+            box-sizing: border-box;
+            margin: 0 10%;
 
-              @media ${theme.deviceSize.phone} {
-                font-size: 4vw;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+
+            -ms-overflow-style: none;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+          `}
+        >
+          <AdCardSection ref={adCardRef} />
+        </ContentsContainer>
+
+        <div
+          css={css`
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            box-sizing: border-box;
+            padding-right: 4%;
+            gap: 1vw;
+
+            svg {
+              transition: scale 0.4s ease-in-out;
+              &:hover {
+                scale: 1.1;
               }
-            `}
-          >
-            <span
-              css={css`
-                margin: 3.5vh 0;
-              `}
-            >
-              다른 곳에서 발매되지 않는 게임을 오직 OKGO에서,
-            </span>
-            <span>더 높은 배당으로.</span>
-          </div>
-        </ContentsContainer>
-        <ContentsContainer>
-          <SlotGames />
-        </ContentsContainer>
-        <ContentsContainer>
-          <ContentsTitle theme={theme}>GLOBAL PARTNER</ContentsTitle>
-          <ScrollScaleVideo windowWidth={windowWidth} />
-        </ContentsContainer>
+            }
+          `}
+        >
+          <ArrowCircleLeftIcon
+            sx={{ width: 40, height: 40 }}
+            onClick={scrollPrev}
+          />
+          <ArrowCircleRightIcon
+            sx={{ width: 40, height: 40 }}
+            onClick={scrollNext}
+          />
+        </div>
       </PageContainer>
     </>
   );
@@ -365,8 +195,8 @@ export function Main() {
 
 const ContentsTitle = styled.h2<{ theme: Theme }>(
   ({ theme }) => css`
-    font-weight: 700;
-    font-size: 4vw;
+    font-weight: 600;
+    font-size: 3vw;
     font-family: ${theme.mode.font.component.mainTitle};
   `,
 );
@@ -380,7 +210,6 @@ const CarouselContainer = styled.div<{ width: number }>(
     justify-content: center;
     align-items: center;
 
-    background-color: black;
     margin-bottom: 40px;
   `,
 );

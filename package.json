@@ -73,6 +73,8 @@
     "eslint-plugin-security": "^3.0.1",
     "globals": "^15.15.0",
     "hls.js": "^1.6.2",
+    "html-to-image": "^1.11.13",
+    "html2canvas": "^1.4.1",
     "luxon": "^3.6.1",
     "sass-embedded": "^1.86.3",
     "typescript": "~5.7.2",

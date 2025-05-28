@@ -305,6 +305,19 @@ export const Text = styled.span<{ width?: number; textAlign: string }>(
   `,
 );
 
+/** Y 스크롤 기반 타임라인에서 사용하는 캡션의 타이틀 컴포넌트입니다. */
+export const SectionTitle = styled.h1<{ marginBottom?: number }>(
+    ({ marginBottom }) => css`
+    margin-bottom: ${marginBottom}px;
+    font-family: Montserrat, sans-serif;
+    font-size: 1.875rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 2.4375rem;
+    color: white;
+  `,
+);
+
 export function GlobalStyled() {
   const theme = useTheme();
   return (
@@ -377,3 +390,5 @@ export function GlobalStyled() {
     />
   );
 }
+
+

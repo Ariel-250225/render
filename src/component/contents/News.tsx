@@ -7,7 +7,7 @@ import sscNapoli from "../assets/image/news/SSC_Napoli.png";
 import news_3 from "../assets/image/news/news_3.jpg";
 import globalNews_1 from "../assets/image/news/global_news_1.jpg";
 import globalNews_2 from "../assets/image/news/global_news_2.jpg";
-import { ICoinLogo } from "../IcoinsLogo";
+import iCoinLogo from "../assets/image/iCoinVertical.png";
 import { useWindowContext } from "../../Context/WindowContext";
 
 export function GlobalNewsFeed() {
@@ -93,7 +93,7 @@ export function NewsFeed() {
         }
         image=""
         color="#040434"
-        width={20}
+        width={16}
         contents={
           <FeedContainer
             css={css`
@@ -115,12 +115,8 @@ export function NewsFeed() {
         aspectRatio="1/1"
       />
       <NewsCard
-        width={20}
-        banner={
-          <BannerImageCase width={28}>
-            <ICoinLogo fontSize={isMobile ? 80 : 50} />
-          </BannerImageCase>
-        }
+        width={16}
+        image={iCoinLogo}
         color={theme.colors.azure}
         contents={
           <FeedContainer
@@ -141,10 +137,9 @@ export function NewsFeed() {
           </FeedContainer>
         }
         aspectRatio="1/1"
-        image=""
       />
       <NewsCard
-        width={20}
+        width={16}
         image={news_3}
         color="#061F27"
         description=""
@@ -212,11 +207,11 @@ const FeedDescription = styled.span<{ fontSize: number; theme: Theme }>(
 
 const NewsFeedContainer = styled.div<{ theme: Theme }>(
   ({ theme }) => css`
-    width: 100%;
+    width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     color: ${theme.mode.textRevers};
-    gap: 1vw;
+    gap: 2vw;
 
     @media ${theme.deviceSize.phone} {
       width: 100%;

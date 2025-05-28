@@ -10,7 +10,6 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Main } from "./page/Main";
 import { GlobalStyled } from "./component/layouts/Layouts";
-import { SmoothScroll } from "./component/Scroll";
 import { Footer } from "./component/Frame/Footer";
 
 const QUERY_CLIENT = new QueryClient();
@@ -31,14 +30,14 @@ function App() {
           <Footer />
           <Toaster />
           <GlobalStyled />
-          <SmoothScroll>
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Main />}></Route>
-              </Routes>
-              <footer style={{ height: "150px" }}></footer>
-            </BrowserRouter>
-          </SmoothScroll>
+          {/*<SmoothScroll>*/}
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Main />}></Route>
+            </Routes>
+            <footer style={{ height: "100px" }}></footer>
+          </BrowserRouter>
+          {/*</SmoothScroll>*/}
         </WindowContextProvider>
       </QueryClientProvider>
     </ThemeProvider>

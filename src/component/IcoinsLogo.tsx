@@ -6,7 +6,7 @@ export function ICoinLogo(props: { className?: string; fontSize?: number }) {
   const theme = useTheme();
   return (
     <LogoTextCase className={className} fontSize={fontSize} theme={theme}>
-      <StyledI fontSize={fontSize + 10}>i</StyledI> conins
+      <StyledI fontSize={fontSize + 10}>i</StyledI> coins
     </LogoTextCase>
   );
 }
@@ -33,7 +33,7 @@ const LogoTextCase = styled.span<{ fontSize: number; theme: Theme }>(
 
     height: 100px;
     color: ${theme.colors.azure};
-    font-family: ${theme.fontStyle.iBrand};
+    font-family: "iBrand", sans-serif; /* ✅ 필수 */
     font-weight: 700;
     font-size: ${fontSize}px;
     transform: translateY(0%);

@@ -16,7 +16,7 @@ import { LeftArrowIcon, RightArrowIcon } from "../styled/icons";
 import { FuncItem } from "../styled/Button/Button";
 import { css, Theme, useTheme } from "@emotion/react";
 import { useItemResizing } from "../../hooks/useLayouts";
-import soccer from "../assets/image/game/sport/soccer.jpg";
+import soccer from "../assets/image/sport/soccer.jpg";
 import casino from "../assets/image/game/casino.jpeg";
 // import basketball from "../assets/image/game/sport/basketball-dunk.jpg";
 // import volleyball from "../assets/image/game/sport/volleyball.jpg";
@@ -26,7 +26,7 @@ import casino from "../assets/image/game/casino.jpeg";
 // import ufc from "../assets/image/game/sport/ufc.jpg";
 // import pingPong from "../assets/image/game/sport/pingpong.jpg";
 // import tennis from "../assets/image/game/sport/tennis.jpg";
-import eSports from "../assets/image/game/sport/esports.jpg";
+import eSports from "../assets/image/sport/esports.jpg";
 // import americaFootball from "../assets/image/game/sport/america-football.jpg";
 // import cricket from "../assets/image/game/sport/cricket.jpg";
 

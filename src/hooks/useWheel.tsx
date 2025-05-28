@@ -101,3 +101,32 @@ export function useItemScrollControls<T>(
 
   return { scrollXValue, leftButton, rightButton };
 }
+
+export function isOverXScrolling(ref?: RefObject<HTMLElement> | null) {
+  if (!ref) return;
+  let totalWidth = ref.current.scrollWidth - ref.current.offsetWidth;
+  let scrollLocation = Math.round(ref.current.scrollLeft);
+
+  return scrollLocation >= totalWidth;
+}
+
+/** ref 요소가 아닌 브라우저의 스크롤 위치를 추적합니다. */
+export function useScrollPosition() {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    // 스크롤 이벤트를 추가
+    window.addEventListener("scroll", handleScroll);
+
+    // 정리 함수로 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return scrollPosition;
+}
