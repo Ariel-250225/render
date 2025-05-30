@@ -22,6 +22,8 @@ export function Main() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const adCardRef = useRef<HTMLDivElement>(null);
 
+  const isOkGoLike = window.location.hostname.includes("like");
+
   const move = (url: string) => {
     window.location.href = "https://" + url;
   };
@@ -132,19 +134,50 @@ export function Main() {
                 margin-top: 2%;
               `}
             >
-              {domainList.map((domain) => (
-                <FuncItem
-                  key={domain}
-                  label={domain.toUpperCase()}
-                  css={css`
-                    width: 25vw;
-                    font-family: ${theme.fontStyle.iBrand};
-                    background-color: ${theme.mode.buttonHoverBackground};
-                    font-size: 2.5rem;
-                  `}
-                  func={() => move(domain)}
-                />
-              ))}
+              {isOkGoLike ? (
+                <>
+                  <FuncItem
+                    label="가입코드 : FB88"
+                    css={css`
+                      cursor: default;
+                      width: 25vw;
+                      font-family: ${theme.fontStyle.nanumGothic};
+                      font-weight: 800;
+                      background-color: ${theme.mode.bodyBackground};
+                      font-size: 2.5rem;
+
+                      &:hover {
+                        background-color: ${theme.mode.bodyBackground};
+                      }
+                    `}
+                    func={() => move("okgolive.com")}
+                  />
+                  <FuncItem
+                    label="OKGOLIVE.COM"
+                    css={css`
+                      width: 25vw;
+                      font-family: ${theme.fontStyle.iBrand};
+                      background-color: ${theme.mode.buttonHoverBackground};
+                      font-size: 2.5rem;
+                    `}
+                    func={() => move("okgolive.com")}
+                  />
+                </>
+              ) : (
+                domainList.map((domain) => (
+                  <FuncItem
+                    key={domain}
+                    label={domain.toUpperCase()}
+                    css={css`
+                      width: 25vw;
+                      font-family: ${theme.fontStyle.iBrand};
+                      background-color: ${theme.mode.buttonHoverBackground};
+                      font-size: 2.5rem;
+                    `}
+                    func={() => move(domain)}
+                  />
+                ))
+              )}
             </div>
           </ContentsContainer>
         </CarouselContainer>
