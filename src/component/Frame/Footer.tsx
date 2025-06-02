@@ -22,6 +22,8 @@ export function Footer() {
     theme.windowSize.mobile,
   );
 
+  const isOkGoLike = window.location.hostname.includes("like");
+
   const move = (url: string) => {
     window.location.href = url;
   };
@@ -47,7 +49,13 @@ export function Footer() {
           buttonSize={container.size}
           fontSize={font.size}
           iconSize={icon.size}
-          func={() => move("https://okgonapoli.com/_views/6_main/main.php")}
+          func={() =>
+            move(
+              isOkGoLike
+                ? "https://okgolive.com/_views/6_main/main.php"
+                : "https://okgonapoli.com/_views/6_main/main.php",
+            )
+          }
         />
         <SlideButton
           label="텔레그램"
