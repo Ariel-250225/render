@@ -9,6 +9,8 @@ import {
   useProportionSizeHook,
 } from "../../hooks/useWindowHooks";
 import { useWindowContext } from "../../Context/WindowContext";
+import { domainMatcher } from "../../page/Main";
+import { move } from "../../page/Main";
 
 export function Footer() {
   const theme = useTheme();
@@ -21,12 +23,6 @@ export function Footer() {
     60,
     theme.windowSize.mobile,
   );
-
-  const isOkGoSsc88 = window.location.hostname.includes("okgossc88");
-
-  const move = (url: string) => {
-    window.location.href = url;
-  };
 
   return (
     <FooterContainer>
@@ -49,9 +45,7 @@ export function Footer() {
           buttonSize={container.size}
           fontSize={font.size}
           iconSize={icon.size}
-          func={() =>
-            move(isOkGoSsc88 ? "https://okgo-ccc.com" : "https://okgo-ccc.com")
-          }
+          func={() => move(domainMatcher(window.location.hostname))}
         />
         <SlideButton
           label="텔레그램"
@@ -61,7 +55,7 @@ export function Footer() {
           buttonSize={container.size}
           fontSize={font.size}
           iconSize={icon.size}
-          func={() => move("https://t.me/go365")}
+          func={() => move("t.me/go365")}
         />
       </div>
     </FooterContainer>

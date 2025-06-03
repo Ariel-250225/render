@@ -18,9 +18,15 @@ export const domainMatcher = (domain: string) => {
     return "okgo-bbb.com";
   } else if (domain.includes("okgossc88.com")) {
     return "okgo-ccc.com";
+  } else if (domain.includes("okgo접속.com")) {
+    return "okgo-ddd.com";
   } else {
     return "okgo-aaa.com";
   }
+};
+
+export const move = (url: string) => {
+  window.location.href = "https://" + url;
 };
 
 export function Main() {
@@ -31,10 +37,6 @@ export function Main() {
   const adCardRef = useRef<HTMLDivElement>(null);
 
   const isOkGoSsc88 = window.location.hostname.includes("okgossc88");
-
-  const move = (url: string) => {
-    window.location.href = "https://" + url;
-  };
 
   const header = document.querySelector("header");
 
