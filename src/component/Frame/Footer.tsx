@@ -22,7 +22,7 @@ export function Footer() {
     theme.windowSize.mobile,
   );
 
-  const isOkGoLike = window.location.hostname.includes("like");
+  const isOkGoSsc88 = window.location.hostname.includes("okgossc88");
 
   const move = (url: string) => {
     window.location.href = url;
@@ -51,8 +51,8 @@ export function Footer() {
           iconSize={icon.size}
           func={() =>
             move(
-              isOkGoLike
-                ? "https://ak-vip99.com/_views/6_main/main.php"
+              isOkGoSsc88
+                ? "okgo-ccc.com"
                 : "https://ak-vip99.com/_views/6_main/main.php",
             )
           }

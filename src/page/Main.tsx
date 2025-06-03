@@ -22,7 +22,7 @@ export function Main() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const adCardRef = useRef<HTMLDivElement>(null);
 
-  const isOkGoLike = window.location.hostname.includes("like");
+  const isOkGoSsc88 = window.location.hostname.includes("okgossc88");
 
   const move = (url: string) => {
     window.location.href = "https://" + url;
@@ -134,7 +134,7 @@ export function Main() {
                 margin-top: 2%;
               `}
             >
-              {isOkGoLike ? (
+              {isOkGoSsc88 ? (
                 <>
                   <FuncItem
                     label="가입코드 : FB88"
@@ -150,7 +150,7 @@ export function Main() {
                         background-color: ${theme.mode.bodyBackground};
                       }
                     `}
-                    func={() => move("ak-vip99.com/_views/6_main/main.php")}
+                    func={() => move("okgo-ccc.com")}
                   />
                   <FuncItem
                     label="OKGOLIVE.COM"
@@ -160,7 +160,7 @@ export function Main() {
                       background-color: ${theme.mode.buttonHoverBackground};
                       font-size: 2.5rem;
                     `}
-                    func={() => move("ak-vip99.com/_views/6_main/main.php")}
+                    func={() => move("okgo-ccc.com")}
                   />
                 </>
               ) : (
