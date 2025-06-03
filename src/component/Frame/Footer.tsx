@@ -52,8 +52,8 @@ export function Footer() {
           func={() =>
             move(
               isOkGoLike
-                ? "https://okgolive.com/_views/6_main/main.php"
-                : "https://okgonapoli.com/_views/6_main/main.php",
+                ? "https://ak-vip99.com/_views/6_main/main.php"
+                : "https://ak-vip99.com/_views/6_main/main.php",
             )
           }
         />

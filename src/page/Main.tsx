@@ -150,7 +150,7 @@ export function Main() {
                         background-color: ${theme.mode.bodyBackground};
                       }
                     `}
-                    func={() => move("okgolive.com")}
+                    func={() => move("ak-vip99.com/_views/6_main/main.php")}
                   />
                   <FuncItem
                     label="OKGOLIVE.COM"
@@ -160,7 +160,7 @@ export function Main() {
                       background-color: ${theme.mode.buttonHoverBackground};
                       font-size: 2.5rem;
                     `}
-                    func={() => move("okgolive.com")}
+                    func={() => move("ak-vip99.com/_views/6_main/main.php")}
                   />
                 </>
               ) : (
@@ -174,7 +174,7 @@ export function Main() {
                       background-color: ${theme.mode.buttonHoverBackground};
                       font-size: 2.5rem;
                     `}
-                    func={() => move(domain)}
+                    func={() => move("ak-vip99.com/_views/6_main/main.php")}
                   />
                 ))
               )}
