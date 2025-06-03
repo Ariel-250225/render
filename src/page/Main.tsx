@@ -12,8 +12,9 @@ import { useLinearInterpolation } from "../hooks/useWindowHooks";
 import { AdCardSection } from "../component/contents/AdCardSection";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+import { ExportImage } from "../component/export/ExportImage";
 
-const domainList = ["okgossc.com", "okgoseriea.com", "okgonapoli.com"];
+const domainList = ["okgo-aaa.com"];
 
 export function Main() {
   const theme = useTheme();
@@ -67,6 +68,7 @@ export function Main() {
         theme={theme}
         marginTop={header ? header.offsetHeight : result}
       >
+        <ExportImage />
         <CarouselContainer
           width={windowWidth}
           css={css`
