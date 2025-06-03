@@ -14,11 +14,11 @@ import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
 export const domainMatcher = (domain: string) => {
-  if (domain.includes("okgo안내")) {
+  if (domain.includes("xn--okgo-ee8px10h.com")) {
     return "okgo-bbb.com";
   } else if (domain.includes("okgossc88.com")) {
     return "okgo-ccc.com";
-  } else if (domain.includes("okgo접속.com")) {
+  } else if (domain.includes("xn--okgo-jz5ri71a.com")) {
     return "okgo-ddd.com";
   } else {
     return "okgo-aaa.com";
