@@ -12,7 +12,6 @@ import { useLinearInterpolation } from "../hooks/useWindowHooks";
 import { AdCardSection } from "../component/contents/AdCardSection";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-import { ExportImage } from "../component/export/ExportImage";
 
 const domainList = ["okgo-aaa.com"];
 
@@ -68,7 +67,6 @@ export function Main() {
         theme={theme}
         marginTop={header ? header.offsetHeight : result}
       >
-        <ExportImage />
         <CarouselContainer
           width={windowWidth}
           css={css`
@@ -176,7 +174,7 @@ export function Main() {
                       background-color: ${theme.mode.buttonHoverBackground};
                       font-size: 2.5rem;
                     `}
-                    func={() => move("ak-vip99.com/_views/6_main/main.php")}
+                    func={() => move(domain)}
                   />
                 ))
               )}
