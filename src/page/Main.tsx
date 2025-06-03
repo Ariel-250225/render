@@ -36,8 +36,6 @@ export function Main() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const adCardRef = useRef<HTMLDivElement>(null);
 
-  const isOkGoSsc88 = window.location.hostname.includes("okgossc88");
-
   const header = document.querySelector("header");
 
   const { result } = useLinearInterpolation(windowWidth, 864, 48, 1728, 82);
@@ -144,47 +142,16 @@ export function Main() {
                 margin-top: 2%;
               `}
             >
-              {isOkGoSsc88 ? (
-                <>
-                  <FuncItem
-                    label="가입코드 : FB88"
-                    css={css`
-                      cursor: default;
-                      width: 25vw;
-                      font-family: ${theme.fontStyle.nanumGothic};
-                      font-weight: 800;
-                      background-color: ${theme.mode.bodyBackground};
-                      font-size: 2.5rem;
-
-                      &:hover {
-                        background-color: ${theme.mode.bodyBackground};
-                      }
-                    `}
-                    func={() => move("okgo-ccc.com")}
-                  />
-                  <FuncItem
-                    label="OKGO-CCC.COM"
-                    css={css`
-                      width: 25vw;
-                      font-family: ${theme.fontStyle.iBrand};
-                      background-color: ${theme.mode.buttonHoverBackground};
-                      font-size: 2.5rem;
-                    `}
-                    func={() => move("okgo-ccc.com")}
-                  />
-                </>
-              ) : (
-                <FuncItem
-                  label={domainMatcher(window.location.hostname).toUpperCase()}
-                  css={css`
-                    width: 25vw;
-                    font-family: ${theme.fontStyle.iBrand};
-                    background-color: ${theme.mode.buttonHoverBackground};
-                    font-size: 2.5rem;
-                  `}
-                  func={() => move(domainMatcher(window.location.hostname))}
-                />
-              )}
+              <FuncItem
+                label={domainMatcher(window.location.hostname).toUpperCase()}
+                css={css`
+                  width: 25vw;
+                  font-family: ${theme.fontStyle.iBrand};
+                  background-color: ${theme.mode.buttonHoverBackground};
+                  font-size: 2.5rem;
+                `}
+                func={() => move(domainMatcher(window.location.hostname))}
+              />
             </div>
           </ContentsContainer>
         </CarouselContainer>
