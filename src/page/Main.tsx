@@ -19,7 +19,7 @@ export const domainMatcher = (domain: string) => {
   } else if (domain.includes("okgossc88.com")) {
     return "okgo-ccc.com";
   } else if (domain.includes("xn--okgo-jz5ri71a.com")) {
-    return "okgo-ddd.com";
+    return "okgo-good.com";
   } else {
     return "okgo-aaa.com";
   }
