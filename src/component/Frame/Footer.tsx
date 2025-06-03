@@ -50,11 +50,7 @@ export function Footer() {
           fontSize={font.size}
           iconSize={icon.size}
           func={() =>
-            move(
-              isOkGoSsc88
-                ? "https://okgo-ccc.com"
-                : "https://ak-vip99.com/_views/6_main/main.php",
-            )
+            move(isOkGoSsc88 ? "https://okgo-ccc.com" : "https://okgo-ccc.com")
           }
         />
         <SlideButton
