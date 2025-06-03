@@ -13,7 +13,15 @@ import { AdCardSection } from "../component/contents/AdCardSection";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
-const domainList = ["okgo-aaa.com"];
+export const domainMatcher = (domain: string) => {
+  if (domain.includes("okgo안내")) {
+    return "okgo-bbb.com";
+  } else if (domain.includes("okgossc88.com")) {
+    return "okgo-ccc.com";
+  } else {
+    return "okgo-aaa.com";
+  }
+};
 
 export function Main() {
   const theme = useTheme();
@@ -164,19 +172,16 @@ export function Main() {
                   />
                 </>
               ) : (
-                domainList.map((domain) => (
-                  <FuncItem
-                    key={domain}
-                    label={domain.toUpperCase()}
-                    css={css`
-                      width: 25vw;
-                      font-family: ${theme.fontStyle.iBrand};
-                      background-color: ${theme.mode.buttonHoverBackground};
-                      font-size: 2.5rem;
-                    `}
-                    func={() => move(domain)}
-                  />
-                ))
+                <FuncItem
+                  label={domainMatcher(window.location.hostname).toUpperCase()}
+                  css={css`
+                    width: 25vw;
+                    font-family: ${theme.fontStyle.iBrand};
+                    background-color: ${theme.mode.buttonHoverBackground};
+                    font-size: 2.5rem;
+                  `}
+                  func={() => move(domainMatcher(window.location.hostname))}
+                />
               )}
             </div>
           </ContentsContainer>
