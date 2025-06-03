@@ -52,7 +52,7 @@ export function Footer() {
           func={() =>
             move(
               isOkGoSsc88
-                ? "okgo-ccc.com"
+                ? "https://okgo-ccc.com"
                 : "https://ak-vip99.com/_views/6_main/main.php",
             )
           }

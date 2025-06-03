@@ -153,7 +153,7 @@ export function Main() {
                     func={() => move("okgo-ccc.com")}
                   />
                   <FuncItem
-                    label="OKGOSSC88.COM"
+                    label="OKGO-CCC.COM"
                     css={css`
                       width: 25vw;
                       font-family: ${theme.fontStyle.iBrand};
