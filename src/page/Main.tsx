@@ -12,7 +12,6 @@ import { useLinearInterpolation } from "../hooks/useWindowHooks";
 import { AdCardSection } from "../component/contents/AdCardSection";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-import { ExportImage } from "../component/export/ExportImage";
 
 export const domainMatcher = (domain: string) => {
   if (domain.includes("xn--okgo-ee8px10h.com")) {
@@ -78,7 +77,6 @@ export function Main() {
         theme={theme}
         marginTop={header ? header.offsetHeight : result}
       >
-        <ExportImage />
         <CarouselContainer
           width={windowWidth}
           css={css`
