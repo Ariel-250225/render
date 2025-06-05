@@ -12,6 +12,7 @@ import { useLinearInterpolation } from "../hooks/useWindowHooks";
 import { AdCardSection } from "../component/contents/AdCardSection";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+import { ExportImage } from "../component/export/ExportImage";
 
 export const domainMatcher = (domain: string) => {
   if (domain.includes("xn--okgo-ee8px10h.com")) {
@@ -77,6 +78,7 @@ export function Main() {
         theme={theme}
         marginTop={header ? header.offsetHeight : result}
       >
+        <ExportImage />
         <CarouselContainer
           width={windowWidth}
           css={css`
@@ -196,34 +198,34 @@ export function Main() {
           `}
         >
           <AdCardSection ref={adCardRef} />
-        </ContentsContainer>
-        <div
-          css={css`
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            box-sizing: border-box;
-            padding-right: 4%;
-            gap: 1vw;
+          <div
+            css={css`
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-end;
+              box-sizing: border-box;
+              margin-top: 3.5vh;
+              gap: 1vw;
 
-            svg {
-              transition: scale 0.4s ease-in-out;
-              &:hover {
-                scale: 1.1;
+              svg {
+                transition: scale 0.4s ease-in-out;
+                &:hover {
+                  scale: 1.1;
+                }
               }
-            }
-          `}
-        >
-          <ArrowCircleLeftIcon
-            sx={{ width: 40, height: 40 }}
-            onClick={scrollPrev}
-          />
-          <ArrowCircleRightIcon
-            sx={{ width: 40, height: 40 }}
-            onClick={scrollNext}
-          />
-        </div>
+            `}
+          >
+            <ArrowCircleLeftIcon
+              sx={{ width: 40, height: 40 }}
+              onClick={scrollPrev}
+            />
+            <ArrowCircleRightIcon
+              sx={{ width: 40, height: 40 }}
+              onClick={scrollNext}
+            />
+          </div>
+        </ContentsContainer>
       </PageContainer>
     </>
   );

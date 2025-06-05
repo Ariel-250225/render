@@ -35,7 +35,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Main />}></Route>
             </Routes>
-            <footer style={{ height: "100px" }}></footer>
+            <footer style={{ height: "40px" }}></footer>
           </BrowserRouter>
           {/*</SmoothScroll>*/}
         </WindowContextProvider>
