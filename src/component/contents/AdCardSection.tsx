@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { Collection, collectionContentsType } from "../card/Collection";
 
-import napoliPlayer from "../assets/image/sport/napoli_player.jpg";
-import iCoinLogo from "../assets/image/iCoinVertical.png";
-import liveCasino from "../assets/image/game/liveCasinoVertical.jpg";
-import liveSports from "../assets/image/sport/soccer.jpg";
-import liveESports from "../assets/image/sport/esports.jpg";
-import napoliLogo from "../assets/image/news/global_news_2.jpg";
-import security from "../assets/image/security.png";
+import napoliPlayer from "../assets/image/sport/napoli_player.avif";
+import iCoinLogo from "../assets/image/iCoinVertical.avif";
+import liveCasino from "../assets/image/game/liveCasinoVertical.avif";
+import liveSports from "../assets/image/sport/soccer.avif";
+import liveESports from "../assets/image/sport/esports.avif";
+import napoliLogo from "../assets/image/news/global_news_2.avif";
+import security from "../assets/image/security.avif";
 import { css, useTheme } from "@emotion/react";
 import { Fragment, RefObject } from "react";
 
