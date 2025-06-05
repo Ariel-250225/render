@@ -1,32 +1,6 @@
 import styled from "@emotion/styled";
 import { css, Theme } from "@emotion/react";
 
-export const MainFrameWrapper = styled.article<{ coordinateY?: number }>(
-  ({ coordinateY = 5 }) => css`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    transform: translateY(${coordinateY}%);
-  `,
-);
-
-export const ResourcePageContainer = styled.section`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const ComponentContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
 export const Container = styled.div`
   width: 100%;
   display: flex;

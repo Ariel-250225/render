@@ -1,30 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import styled from "@emotion/styled";
-import { css, Theme, useTheme } from "@emotion/react";
-import logoImage from "./logo.png";
-import sscNapoli from "../assets/image/news/SSC_Napoli.png";
+import { css, useTheme } from "@emotion/react";
+import logoImage from "./logo.avif";
+import sscNapoli from "../assets/image/news/SSC_Napoli.avif";
 import { Divider } from "../layouts/Layouts";
-
-export function LogoIcon(props: { className?: string }) {
-  return <img className={props.className} src={logoImage} alt="logo"></img>;
-}
-
-export function LogoText() {
-  const theme = useTheme();
-  return <LogoTextCase theme={theme}>OKGO.COM</LogoTextCase>;
-}
-
-const LogoTextCase = styled.span<{ theme: Theme }>(
-  ({ theme }) => css`
-    white-space: nowrap;
-    color: ${theme.mode.textPrimary};
-    font-family: ${theme.mode.font.logo};
-    font-weight: 700;
-    font-size: 2vw;
-    transform: translateY(0%);
-    letter-spacing: -0.07em;
-  `,
-);
 
 export function Logo() {
   const theme = useTheme();
