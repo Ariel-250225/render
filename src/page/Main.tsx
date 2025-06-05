@@ -73,7 +73,7 @@ export function Main() {
     <>
       <PageContainer
         width={windowWidth}
-        gap={5}
+        gap={3}
         theme={theme}
         marginTop={header ? header.offsetHeight : result}
       >
@@ -196,34 +196,35 @@ export function Main() {
           `}
         >
           <AdCardSection ref={adCardRef} />
-          <div
-            css={css`
-              width: 100%;
-              display: flex;
-              flex-direction: row;
-              justify-content: flex-end;
-              box-sizing: border-box;
-              margin-top: 3.5vh;
-              gap: 1vw;
-
-              svg {
-                transition: scale 0.4s ease-in-out;
-                &:hover {
-                  scale: 1.1;
-                }
-              }
-            `}
-          >
-            <ArrowCircleLeftIcon
-              sx={{ width: 40, height: 40 }}
-              onClick={scrollPrev}
-            />
-            <ArrowCircleRightIcon
-              sx={{ width: 40, height: 40 }}
-              onClick={scrollNext}
-            />
-          </div>
         </ContentsContainer>
+        <div
+          css={css`
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            box-sizing: border-box;
+            padding-right: 4%;
+            gap: 1vw;
+            z-index: 1;
+
+            svg {
+              transition: scale 0.4s ease-in-out;
+              &:hover {
+                scale: 1.1;
+              }
+            }
+          `}
+        >
+          <ArrowCircleLeftIcon
+            sx={{ width: 40, height: 40 }}
+            onClick={scrollPrev}
+          />
+          <ArrowCircleRightIcon
+            sx={{ width: 40, height: 40 }}
+            onClick={() => scrollNext()}
+          />
+        </div>
       </PageContainer>
     </>
   );
