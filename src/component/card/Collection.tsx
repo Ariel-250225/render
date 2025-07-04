@@ -249,6 +249,5 @@ const DetailContentsWrapper = styled.div<{ theme: Theme; colors?: string[] }>(
 
 const DetailImageCase = styled.img`
   width: 90%;
-
   border-radius: 25px;
 `;

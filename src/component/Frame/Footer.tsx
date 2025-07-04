@@ -25,11 +25,7 @@ export function Footer() {
   );
 
   return (
-    <FooterContainer
-      css={css`
-        z-index: 0;
-      `}
-    >
+    <FooterContainer>
       <div
         css={css`
           display: flex;
