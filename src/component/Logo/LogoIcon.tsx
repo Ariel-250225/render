@@ -56,20 +56,20 @@ export function Logo() {
             }
           `}
         />
-        <span
-          css={css`
-            font-family: ${theme.fontStyle.roboto};
-            font-size: 2.6em;
-            font-weight: 600;
+        {/*<span*/}
+        {/*  css={css`*/}
+        {/*    font-family: ${theme.fontStyle.roboto};*/}
+        {/*    font-size: 2.6em;*/}
+        {/*    font-weight: 600;*/}
 
-            @media ${theme.deviceSize.phone} {
-              font-size: 4.6em;
-              font-weight: 800;
-            }
-          `}
-        >
-          SSC Napoli
-        </span>
+        {/*    @media ${theme.deviceSize.phone} {*/}
+        {/*      font-size: 4.6em;*/}
+        {/*      font-weight: 800;*/}
+        {/*    }*/}
+        {/*  `}*/}
+        {/*>*/}
+        {/*  SSC Napoli*/}
+        {/*</span>*/}
       </div>
     </div>
   );

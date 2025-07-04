@@ -6,7 +6,6 @@ import iCoinLogo from "../assets/image/iCoinVertical.avif";
 import liveCasino from "../assets/image/game/liveCasinoVertical.avif";
 import liveSports from "../assets/image/sport/soccer.avif";
 import liveESports from "../assets/image/sport/esports.avif";
-import napoliLogo from "../assets/image/news/global_news_2.avif";
 import security from "../assets/image/security.avif";
 import { css, useTheme } from "@emotion/react";
 import { Fragment, RefObject } from "react";
@@ -23,7 +22,7 @@ export function AdCardSection(props: {
       title: "SSC NAPOLI, 공식 파트너",
       description: "최고와 함께하는\n 최고의 서비스",
       detail: {
-        image: napoliLogo,
+        // image: napoliLogo,
         color: [
           theme.colors.darkCerulean,
           theme.colors.blueBikini,
