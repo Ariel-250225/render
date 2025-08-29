@@ -52,7 +52,7 @@ export function Collection(props: {
 
 const CollectionWrapper = styled.article<{ theme: Theme }>(
   ({ theme }) => css`
-    width: 350px;
+    width: 360px;
     height: 70vh;
     display: flex;
     flex-direction: column;

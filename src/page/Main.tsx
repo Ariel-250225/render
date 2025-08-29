@@ -23,7 +23,7 @@ export const domainMatcher = (domain: string) => {
   } else if (domain.includes("okgo-vip1.com")) {
     return "okgo2025.com";
   } else {
-    return "okgo-aaa.com";
+    return "okgo888.com";
   }
 };
 
@@ -77,6 +77,20 @@ export function Main() {
         theme={theme}
         marginTop={header ? header.offsetHeight : result}
       >
+        {/*<ExportImage*/}
+        {/*  component={*/}
+        {/*    <Collection*/}
+        {/*      ref={adCardRef}*/}
+        {/*      collectionContents={{*/}
+        {/*        image: belleForet,*/}
+        {/*        title: "",*/}
+        {/*        description: "",*/}
+        {/*        detail: { detailContents: "" },*/}
+        {/*      }}*/}
+        {/*      theme={theme}*/}
+        {/*    />*/}
+        {/*  }*/}
+        {/*/>*/}
         <CarouselContainer
           width={windowWidth}
           css={css`

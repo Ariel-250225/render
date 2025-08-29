@@ -1,14 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { Collection, collectionContentsType } from "../card/Collection";
 
-import napoliPlayer from "../assets/image/sport/napoli_player.avif";
-import iCoinLogo from "../assets/image/iCoinVertical.avif";
-import liveCasino from "../assets/image/game/liveCasinoVertical.avif";
-import liveSports from "../assets/image/sport/soccer.avif";
-import liveESports from "../assets/image/sport/esports.avif";
-import security from "../assets/image/security.avif";
 import { css, useTheme } from "@emotion/react";
 import { Fragment, RefObject } from "react";
+import napoli from "../dummy/napoli_player.jpg";
+import soccer from "../dummy/soccer.jpg";
+import liveCasino from "../dummy/liveCasinoVertical.jpg";
+import esport from "../dummy/esports.jpg";
 
 export function AdCardSection(props: {
   ref: RefObject<HTMLDivElement | null>;
@@ -18,7 +16,7 @@ export function AdCardSection(props: {
 
   const COLLECTION_CONTENTS: collectionContentsType[] = [
     {
-      image: napoliPlayer,
+      image: napoli,
       title: "SSC NAPOLI, 공식 파트너",
       description: "최고와 함께하는\n 최고의 서비스",
       detail: {
@@ -33,24 +31,6 @@ export function AdCardSection(props: {
           "최고의 서비스를 제공하기 위해 최고의 팀과 함께합니다.\n\n" +
           "역대 세리에 A 4회 우승과 UEFA 유로파 리그 1회 우승에 빛나는, 팀 나폴리와의 파트너십으로\n" +
           "우리는 세계로 도약하는 회사로의 첫걸음을 내딛었습니다.",
-      },
-    },
-    {
-      image: iCoinLogo,
-      title: "암호화폐 플랫폼, I COINS 도입",
-      description: "쉽게 넣고, \n 안전하게 받고",
-      detail: {
-        image: security,
-        color: [
-          theme.colors.darkCerulean,
-          theme.colors.blueBikini,
-          "#ffffff",
-          "#ffffff",
-        ],
-        detailContents:
-          "우리는 어떻게 하면 당신의 거래가 안전할지 고민합니다.\n\n" +
-          "보내거나 받을 때,\n 비실명 거래로 당신의 개인정보를 보호하고, icoins가 대금결제를 진행하여 거래를 안전하게 지켜주죠.\n\n" +
-          "그리고 자체적인 암호화 시스템 덕분에 당신의 거래정보는 오직 거래를 진행하는데에만 사용되며, 결코 공유되지 않습니다.",
       },
     },
     {
@@ -71,7 +51,7 @@ export function AdCardSection(props: {
       },
     },
     {
-      image: liveSports,
+      image: soccer,
       title: "라이브 스포츠",
       description: "스포츠 베팅은 \n 단순하고, 간편하게",
       detail: {
@@ -88,7 +68,7 @@ export function AdCardSection(props: {
       },
     },
     {
-      image: liveESports,
+      image: esport,
       title: "라이브 E-스포츠",
       description: "더 좋은 화질로 \n더 높은 배당으로",
       detail: {
